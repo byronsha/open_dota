@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Container } from 'semantic-ui-react'
 import { fetchHeroStats } from '../actions/api'
-
-const BASE_URL = 'https://api.opendota.com'
+import HeroStatsNav from '../components/hero_stats/HeroStatsNav'
 
 class HeroStats extends React.Component {
   componentDidMount() {
@@ -17,22 +17,12 @@ class HeroStats extends React.Component {
     } else {
       return (
         <div>
-          <table>
-            <tbody>
-              {heroStats.map(hero => {
-                const { id, localized_name, img, icon, pro_win, pro_pick, pro_ban } = hero
-
-                return (
-                  <tr key={id}>
-                    <td><img src={BASE_URL + img}></img></td>
-                    <td>{localized_name}</td>
-                    <td>{pro_pick}</td>
-                    <td>{pro_win}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+          <HeroStatsNav />
+          <Container>
+            {this.props.children && React.cloneElement(this.props.children, {
+              heroStats
+            })}
+          </Container>
         </div>
       )
     }
@@ -43,10 +33,7 @@ class HeroStats extends React.Component {
 
     return (
       <div>
-        <h3>Hero stats</h3>
-
         {this.renderHeroStats()}
-
         {errorMessage.length > 0 &&
           <div>{errorMessage}</div>
         }
