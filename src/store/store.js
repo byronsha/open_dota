@@ -5,9 +5,11 @@ import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
 import api from '../reducers/api'
+import heroStats from '../reducers/heroStats'
 
 const rootReducer = combineReducers({
   api,
+  heroStats,
   routing: routerReducer
 })
 
