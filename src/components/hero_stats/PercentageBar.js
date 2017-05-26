@@ -19,7 +19,7 @@ const PercentageBar = ({ height, width, color, text }) => (
       <span style={{
         position: 'absolute',
         fontSize: '10px',
-        right: '-65px',
+        right: '-40px',
         top: '-5px',
         whiteSpace: 'nowrap'
       }}>

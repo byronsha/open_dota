@@ -8,7 +8,7 @@ import {
 const initialState = {
   proOrderBy: 'winrate',
   proOrderDirection: 'desc',
-  publicOrderBy: 'winrate',
+  publicOrderBy: '5k_winrate',
   publicOrderDirection: 'desc'
 }
 
