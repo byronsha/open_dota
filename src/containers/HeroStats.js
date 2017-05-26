@@ -47,35 +47,31 @@ class HeroStats extends React.Component {
 }
 
 function orderProHeroStats(stats, orderBy, direction) {
-  if (direction === 'desc') {
-    if (orderBy === 'winrate') {
-      return stats.sort((a, b) => {
+  const statsCopy = JSON.parse(JSON.stringify(stats))
+  
+  return statsCopy.sort((a, b) => {
+    if (direction === 'desc') {
+      if (orderBy === 'winrate') {
         return b.pro_win / b.pro_pick - a.pro_win / a.pro_pick
-      })
-    } else if (orderBy === 'picks') {
-      return stats.sort((a, b) => {
+      } else if (orderBy === 'picks') {
         return b.pro_pick - a.pro_pick
-      })
-    } else if (orderBy ==='bans') {
-      return stats.sort((a, b) => {
+      } else if (orderBy === 'bans') {
         return b.pro_ban - a.pro_ban
-      })
-    }
-  } else if (direction === 'asc') {
-    if (orderBy === 'winrate') {
-      return stats.sort((a, b) => {
+      } else if (orderBy === 'name') {
+        return b.localized_name < a.localized_name ? -1 : 1
+      }
+    } else if (direction === 'asc') {
+      if (orderBy === 'winrate') {
         return a.pro_win / a.pro_pick - b.pro_win / b.pro_pick
-      })
-    } else if (orderBy === 'picks') {
-      return stats.sort((a, b) => {
+      } else if (orderBy === 'picks') {
         return a.pro_pick - b.pro_pick
-      })
-    } else if (orderBy ==='bans') {
-      return stats.sort((a, b) => {
+      } else if (orderBy === 'bans') {
         return a.pro_ban - b.pro_ban
-      })
+      } else if (orderBy === 'name') {
+        return a.localized_name < b.localized_name ? -1 : 1
+      }
     }
-  }
+  })
 }
 
 function mapStateToProps(state) {
