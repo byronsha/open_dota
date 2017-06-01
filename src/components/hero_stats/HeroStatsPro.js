@@ -34,10 +34,10 @@ class HeroStatsPro extends React.Component {
         <Container fluid>
           <Grid verticalAlign="middle" columns="equal">
             <Grid.Row style={{ margin: '0px 100px' }}>
-              <SortButtonPro {...this.props} ownOrderBy="name" text="Hero" width={3} />
-              <SortButtonPro {...this.props} ownOrderBy="winrate" text="Win %" />
-              <SortButtonPro {...this.props} ownOrderBy="picks" text="Picks" />
-              <SortButtonPro {...this.props} ownOrderBy="bans" text="Bans" />
+              <SortButtonPro {...this.props} ownOrderBy="name" text="HERO" width={3} />
+              <SortButtonPro {...this.props} ownOrderBy="winrate" text="WIN %" />
+              <SortButtonPro {...this.props} ownOrderBy="picks" text="PICKS" />
+              <SortButtonPro {...this.props} ownOrderBy="bans" text="BANS" />
             </Grid.Row>
 
             {this.props.heroStatsPro.map(hero => (

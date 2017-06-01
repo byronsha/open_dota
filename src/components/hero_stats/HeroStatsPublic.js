@@ -26,7 +26,7 @@ class HeroStatsPublic extends React.Component {
         <Container fluid>
           <Grid verticalAlign="middle" columns="equal">
             <Grid.Row style={{ margin: '0px 100px' }}>
-              <SortButtonPublic {...this.props} ownOrderBy="name" text="Hero" width={3} />
+              <SortButtonPublic {...this.props} ownOrderBy="name" text="HERO" width={3} />
               <SortButtonPublic {...this.props} ownOrderBy="5k_winrate" text="5K+ W%" />
               <SortButtonPublic {...this.props} ownOrderBy="5k_picks" text="5K+ P" />
               <SortButtonPublic {...this.props} ownOrderBy="4k_winrate" text="4K+ W%" />
