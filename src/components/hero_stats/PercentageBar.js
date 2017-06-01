@@ -2,29 +2,23 @@ import React from 'react'
 
 const PercentageBar = ({ height, width, color, text }) => (
   <div>
+    <div style={{ marginBottom: '5px' }}>
+      {text}
+    </div>
     <div style={{
       display: 'inline-block',
       position: 'relative',
       height: `${height}px`,
-      width: `${width * 1.5}px`,
+      width: `${width}%`,
       background: color
     }}/>
     <div style={{
       display: 'inline-block',
       position: 'relative',
       height: `${height}px`,
-      width: `${150 - width * 1.5}px`,
+      width: `${(100 - width)}%`,
       background: '#eee'
     }}>
-      <span style={{
-        position: 'absolute',
-        fontSize: '10px',
-        right: '-40px',
-        top: '-5px',
-        whiteSpace: 'nowrap'
-      }}>
-        {text}
-      </span>
     </div>
   </div>
 )

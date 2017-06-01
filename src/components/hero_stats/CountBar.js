@@ -1,24 +1,17 @@
 import React from 'react'
 
-const HorizontalBar = ({ height, width, color, text }) => (
+const CountBar = ({ height, width, color, text }) => (
   <div>
+    <div style={{ marginBottom: '5px' }}>
+      {text}
+    </div>
     <div style={{
-      position: 'relative',
       height: `${height}px`,
-      width: `${width}px`,
+      width: `${width}%`,
       background: color
     }}>
-      <span style={{
-        position: 'absolute',
-        fontSize: '10px',
-        left: `${width + 5}px`,
-        top: '-5px',
-        whiteSpace: 'nowrap'
-      }}>
-        {text}
-      </span>
     </div>
   </div>
 )
 
-export default HorizontalBar
+export default CountBar
