@@ -24,6 +24,16 @@ class HeroStatsPro extends React.Component {
     return max
   }
 
+  countGames() {
+    let count = 0
+    for (let hero of this.props.heroStatsPro) {
+      if (hero.pro_pick) {
+        count += hero.pro_pick
+      }
+    }
+    return count / 10
+  }
+
   render() {
     const max = Math.max(this.getHighestPicks(), this.getHighestBans())
     const headerStyle = {
@@ -31,19 +41,21 @@ class HeroStatsPro extends React.Component {
     }
     const sorterStyle = {
       margin: '0px 100px',
-      background: '#1d1d1d'
+      background: '#1d1d1d',
+      borderBottom: '1px solid #444'
     }
+    const gameCount = this.countGames()
 
     return (
       <div>
         <Header inverted as="h2" textAlign="center" style={headerStyle}>
-          Hero Stats for Pro Games
+          Hero Stats for Professional Games
           <Header.Subheader>
-            over the last 30 days
+            {gameCount.toLocaleString()} games over the last 30 days
           </Header.Subheader>
         </Header>
 
-        <Container fluid>
+        <Container fluid style={{ marginBottom: '100px' }}>
           <Grid verticalAlign="middle" columns="equal">
             <Grid.Row style={sorterStyle}>
               <SortButtonPro {...this.props} ownOrderBy="name" text="HERO" width={3} />

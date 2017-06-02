@@ -15,13 +15,15 @@ class HeroStats extends React.Component {
   }
 
   renderHeroStats() {
-    if (this.props.isLoading) {
-      return <div>Fetching hero stats from API...</div>
+    if (this.props.heroStatsLoading) {
+      return (
+        <div style={{ textAlign: 'center', paddingTop: '50px' }}>
+          ...
+        </div>
+      )
     } else {
       return (
         <div>
-          <HeroStatsNav path={this.props.location.pathname} />
-
           {this.props.children && React.cloneElement(this.props.children, {
             ...this.props
           })}
@@ -31,14 +33,14 @@ class HeroStats extends React.Component {
   }
 
   render() {
-    const { errorMessage } = this.props 
-
     return (
       <div>
+        <HeroStatsNav path={this.props.location.pathname} />
+
         {this.renderHeroStats()}
         
-        {errorMessage.length > 0 &&
-          <div>{errorMessage}</div>
+        {this.props.errorMessage.length > 0 &&
+          <div>{this.props.errorMessage}</div>
         }
       </div>
     )
@@ -142,11 +144,11 @@ function orderPublicHeroStats(stats, orderBy, direction) {
 }
 
 function mapStateToProps(state) {
-  const { isLoading, heroStats, errorMessage } = state.api
+  const { heroStatsLoading, heroStats, errorMessage } = state.api
   const { proOrderBy, proOrderDirection, publicOrderBy, publicOrderDirection } = state.heroStats
 
   return {
-    isLoading,
+    heroStatsLoading,
     heroStatsPro: orderProHeroStats(heroStats, proOrderBy, proOrderDirection),
     heroStatsPublic: orderPublicHeroStats(heroStats, publicOrderBy, publicOrderDirection),
     errorMessage,

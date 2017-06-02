@@ -7,7 +7,6 @@ const containerStyle = {
 }
 
 const rowStyle = {
-  margin: '0px 100px',
   paddingBottom: '0px',
   textAlign: 'center'
 }
@@ -18,25 +17,25 @@ const linkStyle = {
   marginBottom: '10px'
 }
 
-const HeroStatsNav = ({ path }) => (
-  <Container fluid style={containerStyle}>
+const MatchesNav = ({ path }) => (
+  <Container style={containerStyle}>
     <Grid columns="equal">
       <Grid.Row style={rowStyle}>
         <Grid.Column style={{
           borderBottom: path.indexOf('pro') !== -1 ? '2px solid #2185D0' : '1px solid #444',
           margin: '0px 10px'
         }}>
-          <Link to="/heroes/pro" style={linkStyle}>Pro</Link>
+          <Link to="/matches/pro" style={linkStyle}>Pro</Link>
         </Grid.Column>
         <Grid.Column style={{
           borderBottom: path.indexOf('public') !== -1 ? '2px solid #2185D0' : '1px solid #444',
           margin: '0px 10px'
         }}>
-          <Link to="/heroes/public" style={linkStyle}>Public</Link>
+          <Link to="/matches/public" style={linkStyle}>Public</Link>
         </Grid.Column>
       </Grid.Row>
     </Grid>
   </Container>
 )
 
-export default HeroStatsNav
+export default MatchesNav

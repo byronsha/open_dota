@@ -10,8 +10,8 @@ const HeroRowPro = ({ hero, max }) => {
   if (!pro_win || !pro_pick || !pro_ban) { return <div></div> }
   
   return (
-    <Grid.Row style={{ padding: '0px', borderTop: '1px solid #444', margin: '0px 100px' }}>
-      <Grid.Column width={1}>
+    <Grid.Row style={{ padding: '0px', borderBottom: '1px solid #444', margin: '0px 100px' }}>
+      <Grid.Column computer={1} tablet={2} mobile={2}>
         <Image fluid src={BASE_URL + img} />
       </Grid.Column>
       <Grid.Column width={2}>
@@ -29,7 +29,7 @@ const HeroRowPro = ({ hero, max }) => {
         <CountBar
           width={pro_pick / max * 100}
           height={8}
-          text={`${pro_pick}`}
+          text={pro_pick.toLocaleString()}
           color="#21BA45"
         />
       </Grid.Column>
@@ -37,7 +37,7 @@ const HeroRowPro = ({ hero, max }) => {
         <CountBar
           width={pro_ban / max * 100}
           height={8}
-          text={`${pro_ban}`}
+          text={pro_ban.toLocaleString()}
           color="#DB2828"
         />
       </Grid.Column>

@@ -19,8 +19,8 @@ const HeroRowPublic = ({ hero, max }) => {
   const fiveKPick = hero['5000_pick']
 
   return (
-    <Grid.Row style={{ padding: '0px', borderTop: '1px solid #444', margin: '0px 100px' }}>
-      <Grid.Column width={1}>
+    <Grid.Row style={{ padding: '0px', borderBottom: '1px solid #444', margin: '0px 100px' }}>
+      <Grid.Column computer={1} tablet={2} mobile={2}>
         <Image fluid src={BASE_URL + img} />
       </Grid.Column>
       <Grid.Column width={2}>
@@ -38,7 +38,7 @@ const HeroRowPublic = ({ hero, max }) => {
         <CountBar
           width={fiveKPick / max * 100}
           height={8}
-          text={`${fiveKPick}`}
+          text={fiveKPick.toLocaleString()}
           color="#21BA45"
         />
       </Grid.Column>
@@ -54,7 +54,7 @@ const HeroRowPublic = ({ hero, max }) => {
         <CountBar
           width={fourKPick / max * 100}
           height={8}
-          text={`${fourKPick}`}
+          text={fourKPick.toLocaleString()}
           color="#21BA45"
         />
       </Grid.Column>
@@ -70,7 +70,7 @@ const HeroRowPublic = ({ hero, max }) => {
         <CountBar
           width={threeKPick / max * 100}
           height={8}
-          text={`${threeKPick}`}
+          text={threeKPick.toLocaleString()}
           color="#21BA45"
         />
       </Grid.Column>
@@ -86,7 +86,7 @@ const HeroRowPublic = ({ hero, max }) => {
         <CountBar
           width={twoKPick / max * 100}
           height={8}
-          text={`${twoKPick}`}
+          text={twoKPick.toLocaleString()}
           color="#21BA45"
         />
       </Grid.Column>
@@ -102,7 +102,7 @@ const HeroRowPublic = ({ hero, max }) => {
         <CountBar
           width={oneKPick / max * 100}
           height={8}
-          text={`${oneKPick}`}
+          text={oneKPick.toLocaleString()}
           color="#21BA45"
         />
       </Grid.Column>
