@@ -10,7 +10,7 @@ const HeroRowPro = ({ hero, max }) => {
   if (!pro_win || !pro_pick || !pro_ban) { return <div></div> }
   
   return (
-    <Grid.Row style={{ padding: '0px', borderTop: '1px solid #ddd', margin: '0px 100px' }}>
+    <Grid.Row style={{ padding: '0px', borderTop: '1px solid #444', margin: '0px 100px' }}>
       <Grid.Column width={1}>
         <Image fluid src={BASE_URL + img} />
       </Grid.Column>

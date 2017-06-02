@@ -20,7 +20,7 @@ class HeroStats extends React.Component {
     } else {
       return (
         <div>
-          <HeroStatsNav />
+          <HeroStatsNav path={this.props.location.pathname} />
 
           {this.props.children && React.cloneElement(this.props.children, {
             ...this.props

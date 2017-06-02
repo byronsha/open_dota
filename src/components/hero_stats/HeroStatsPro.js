@@ -26,14 +26,26 @@ class HeroStatsPro extends React.Component {
 
   render() {
     const max = Math.max(this.getHighestPicks(), this.getHighestBans())
+    const headerStyle = {
+      margin: '60px 0px'
+    }
+    const sorterStyle = {
+      margin: '0px 100px',
+      background: '#1d1d1d'
+    }
 
     return (
       <div>
-        <Header textAlign="center">Hero statistics for pro games over the last 30 days</Header>
+        <Header inverted as="h2" textAlign="center" style={headerStyle}>
+          Hero Stats for Pro Games
+          <Header.Subheader>
+            over the last 30 days
+          </Header.Subheader>
+        </Header>
 
         <Container fluid>
           <Grid verticalAlign="middle" columns="equal">
-            <Grid.Row style={{ margin: '0px 100px' }}>
+            <Grid.Row style={sorterStyle}>
               <SortButtonPro {...this.props} ownOrderBy="name" text="HERO" width={3} />
               <SortButtonPro {...this.props} ownOrderBy="winrate" text="WIN %" />
               <SortButtonPro {...this.props} ownOrderBy="picks" text="PICKS" />

@@ -22,7 +22,7 @@ const SortButtonPro = ({
       }
     }}
   >
-    <span style={{ fontWeight: proOrderBy === ownOrderBy ? 'bold' : 'normal' }}>{text}</span>
+    <span style={{ fontWeight: 'bold' }}>{text}</span>
     {proOrderBy === ownOrderBy && proOrderDirection === 'desc' && <Icon name="long arrow down"/>}
     {proOrderBy === ownOrderBy && proOrderDirection === 'asc' && <Icon name="long arrow up"/>}
   </Grid.Column>
