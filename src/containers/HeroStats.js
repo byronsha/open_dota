@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Loader from '../components/Loader'
 import HeroStatsNav from '../components/hero_stats/HeroStatsNav'
 import { fetchHeroStats } from '../actions/api'
 import {
@@ -16,11 +17,7 @@ class HeroStats extends React.Component {
 
   renderHeroStats() {
     if (this.props.heroStatsLoading) {
-      return (
-        <div style={{ textAlign: 'center', paddingTop: '50px' }}>
-          ...
-        </div>
-      )
+      return <Loader />
     } else {
       return (
         <div>

@@ -1,20 +1,8 @@
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Icon } from 'semantic-ui-react'
 import ta from 'time-ago'
-import heroes from '../../constants/heroes'
 
-const IMAGE_URL = 'https://api.opendota.com/apps/dota2/images/heroes/'
-
-const PublicMatch = ({ match }) => {
-  function renderHeroImage(id) {
-    const style = {
-      width: '20%',
-      display: 'inline-block'
-    }
-    const heroName = heroes[id].name.replace('npc_dota_hero_', '')
-    return <Image key={match.match_id + id} style={style} src={`${IMAGE_URL}${heroName}_full.png`} />
-  }
-
+const ProMatch = ({ match }) => {
   function secondsToTime(num) {
     let secNum = parseInt(num, 10)
     let hours = Math.floor(secNum / 3600)
@@ -29,29 +17,32 @@ const PublicMatch = ({ match }) => {
   }
 
   const blue = "#2185D0"
-  const radiant = match.radiant_team.split(',').map(id => renderHeroImage(id))
-  const dire = match.dire_team.split(',').map(id => renderHeroImage(id))
+  const green = "#21BA45"
+  const red = "#DB2828"
+
   const duration = secondsToTime(match.duration)
   const timeAgo = ta().ago(match.start_time * 1000)
 
   return (
     <Grid.Row style={{ padding: '5px 0px', borderBottom: '1px solid #444' }}>
-      <Grid.Column width={3}>
+      <Grid.Column width={5}>
         <div style={{ color: blue }}>{match.match_id}</div>
-        <div style={{ fontSize: '0.85em', color: '#aaa' }}>{match.avg_mmr} MMR</div>
+        <div style={{ fontSize: '0.85em', color: '#aaa' }}>{match.league_name}</div>
       </Grid.Column>
       <Grid.Column width={3}>
         <div>{duration}</div>
         <div style={{ fontSize: '0.85em', color: '#aaa' }}>{timeAgo}</div>
       </Grid.Column>
-      <Grid.Column width={5}>
-        {radiant}
+      <Grid.Column width={4}>
+        {match.radiant_win && <Icon name="trophy" color="yellow" />}
+        <span style={{ color: green }}>{match.radiant_name}</span>
       </Grid.Column>
-      <Grid.Column width={5}>
-        {dire}
+      <Grid.Column width={4}>
+        {!match.radiant_win && <Icon name="trophy" color="yellow" />}
+        <span style={{ color: red }}>{match.dire_name}</span>
       </Grid.Column>
     </Grid.Row>
   )
 }
 
-export default PublicMatch
+export default ProMatch

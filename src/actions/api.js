@@ -10,6 +10,10 @@ export const REQUEST_PUBLIC_MATCHES = 'REQUEST_PUBLIC_MATCHES'
 export const RECEIVE_PUBLIC_MATCHES = 'RECEIVE_PUBLIC_MATCHES'
 export const PUBLIC_MATCHES_FAILURE = 'PUBLIC_MATCHES_FAILURE'
 
+export const REQUEST_PRO_MATCHES = 'REQUEST_PRO_MATCHES'
+export const RECEIVE_PRO_MATCHES = 'RECEIVE_PRO_MATCHES'
+export const PRO_MATCHES_FAILURE = 'PRO_MATCHES_FAILURE'
+
 export function requestHeroStats() {
   return {
     type: REQUEST_HERO_STATS
@@ -74,6 +78,40 @@ export function fetchPublicMatches() {
       .catch(err => {
         console.log(err)
         dispatch(publicMatchesFailure())
+      })
+  }
+}
+
+export function requestProMatches() {
+  return {
+    type: REQUEST_PRO_MATCHES
+  }
+}
+
+export function receiveProMatches(matches) {
+  return {
+    type: RECEIVE_PRO_MATCHES,
+    matches
+  }
+}
+
+export function proMatchesFailure() {
+  return {
+    type: PRO_MATCHES_FAILURE
+  }
+}
+
+export function fetchProMatches() {
+  return function(dispatch) {
+    dispatch(requestProMatches())
+
+    return axios.get(`${API_URL}/proMatches`)
+      .then(res => {
+        dispatch(receiveProMatches(res.data))
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(proMatchesFailure())
       })
   }
 }

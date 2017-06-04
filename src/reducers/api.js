@@ -4,14 +4,19 @@ import {
   HERO_STATS_FAILURE,
   REQUEST_PUBLIC_MATCHES,
   RECEIVE_PUBLIC_MATCHES,
-  PUBLIC_MATCHES_FAILURE
+  PUBLIC_MATCHES_FAILURE,
+  REQUEST_PRO_MATCHES,
+  RECEIVE_PRO_MATCHES,
+  PRO_MATCHES_FAILURE
 } from '../actions/api'
 
 const initialState = {
   heroStatsLoading: false,
-  matchesLoading: false,
+  publicMatchesLoading: false,
+  proMatchesLoading: false,
   heroStats: [],
   publicMatches: [],
+  proMatches: [],
   errorMessage: ''
 }
 
@@ -40,22 +45,42 @@ function api(state = initialState, action) {
     case REQUEST_PUBLIC_MATCHES:
       return {
         ...state,
-        matchesLoading: true,
+        publicMatchesLoading: true,
         errorMessage: ''
       }
     case RECEIVE_PUBLIC_MATCHES:
       return {
         ...state,
-        matchesLoading: false,
+        publicMatchesLoading: false,
         publicMatches: action.matches,
         errorMessage: ''
       }
     case PUBLIC_MATCHES_FAILURE:
       return {
         ...state,
-        matchesLoading: false,
+        publicMatchesLoading: false,
         publicMatches: [],
         errorMessage: 'Failed to retrieve public matches'
+      }
+    case REQUEST_PRO_MATCHES:
+      return {
+        ...state,
+        proMatchesLoading: true,
+        errorMessage: ''
+      }
+    case RECEIVE_PRO_MATCHES:
+      return {
+        ...state,
+        proMatchesLoading: false,
+        proMatches: action.matches,
+        errorMessage: ''
+      }
+    case PRO_MATCHES_FAILURE:
+      return {
+        ...state,
+        proMatchesLoading: false,
+        proMatches: [],
+        errorMessage: 'Failed to retrieve pro matches'
       }
     default:
       return state

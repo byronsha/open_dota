@@ -6,6 +6,10 @@ import PercentageBar from './PercentageBar'
 const BASE_URL = 'https://api.opendota.com'
 
 const HeroRowPro = ({ hero, max }) => {
+  const blue = "#2185D0"
+  const green = "#21BA45"
+  const red = "#DB2828"
+  
   const { id, localized_name, img, pro_win, pro_pick, pro_ban } = hero
   if (!pro_win || !pro_pick || !pro_ban) { return <div></div> }
   
@@ -22,7 +26,7 @@ const HeroRowPro = ({ hero, max }) => {
           width={pro_win / pro_pick * 100}
           height={8}
           text={`${(pro_win / pro_pick * 100).toFixed(2)}%`}
-          color="#2185D0"
+          color={blue}
         />
       </Grid.Column>
       <Grid.Column verticalAlign="bottom">
@@ -30,7 +34,7 @@ const HeroRowPro = ({ hero, max }) => {
           width={pro_pick / max * 100}
           height={8}
           text={pro_pick.toLocaleString()}
-          color="#21BA45"
+          color={green}
         />
       </Grid.Column>
       <Grid.Column verticalAlign="bottom">
@@ -38,7 +42,7 @@ const HeroRowPro = ({ hero, max }) => {
           width={pro_ban / max * 100}
           height={8}
           text={pro_ban.toLocaleString()}
-          color="#DB2828"
+          color={red}
         />
       </Grid.Column>
     </Grid.Row>

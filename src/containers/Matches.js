@@ -1,29 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import MatchesNav from '../components/matches/MatchesNav'
-import { fetchPublicMatches } from '../actions/api'
+import { fetchPublicMatches, fetchProMatches } from '../actions/api'
 
 class Matches extends React.Component {
   componentDidMount() {
     this.props.fetchPublicMatches()
+    this.props.fetchProMatches()
   }
 
   renderMatches() {
-    if (this.props.matchesLoading) {
-      return (
-        <div style={{ textAlign: 'center', paddingTop: '50px' }}>
-          ...
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          {this.props.children && React.cloneElement(this.props.children, {
-            ...this.props
-          })}
-        </div>
-      )
-    }
+    return (
+      <div>
+        {this.props.children && React.cloneElement(this.props.children, {
+          ...this.props
+        })}
+      </div>
+    )
   }
 
   render() {
@@ -42,17 +35,26 @@ class Matches extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { matchesLoading, publicMatches, errorMessage } = state.api
+  const {
+    publicMatchesLoading,
+    proMatchesLoading,
+    publicMatches,
+    proMatches,
+    errorMessage
+  } = state.api
 
   return {
-    matchesLoading,
+    publicMatchesLoading,
+    proMatchesLoading,
     publicMatches,
+    proMatches,
     errorMessage
   }
 }
 
 const mapDispatchToProps = ({
-  fetchPublicMatches
+  fetchPublicMatches,
+  fetchProMatches
 })
 
 export default connect(
