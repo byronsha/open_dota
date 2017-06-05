@@ -23,8 +23,8 @@ const initialState = {
   proMatchesLoading: false,
   publicMatches: [],
   publicMatchesLoading: false,
-  mmrDistributions: [],
-  mmrDistributionsLoading: false,
+  mmrDistribution: null,
+  mmrDistributionLoading: false,
   errorMessage: ''
 }
 
@@ -93,22 +93,22 @@ function api(state = initialState, action) {
     case REQUEST_MMR_DISTRIBUTIONS:
       return {
         ...state,
-        mmrDistributionsLoading: true,
+        mmrDistributionLoading: true,
         errorMessage: ''
       }
     case RECEIVE_MMR_DISTRIBUTIONS:
       return {
         ...state,
-        mmrDistributionsLoading: false,
-        mmrDistributions: action.stats,
+        mmrDistributionLoading: false,
+        mmrDistribution: action.stats,
         errorMessage: ''
       }
     case MMR_DISTRIBUTIONS_FAILURE:
       return {
         ...state,
-        mmrDistributionsLoading: false,
-        mmrDistributions: [],
-        errorMessage: 'Failed to retrieve MMR distributions'
+        mmrDistributionLoading: false,
+        mmrDistribution: null,
+        errorMessage: 'Failed to retrieve MMR distribution'
       }
     default:
       return state

@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Loader from '../components/Loader'
 import MmrNav from '../components/mmr/MmrNav'
-import { fetchMmrDistributions } from '../actions/api'
+import { fetchMmrDistribution } from '../actions/api'
 
 class Mmr extends React.Component {
   componentDidMount() {
-    this.props.fetchMmrDistributions()
+    this.props.fetchMmrDistribution()
   }
 
   renderMmr() {
-    if (this.props.mmrDistrubitionsLoading) {
+    if (this.props.mmrDistrubitionLoading || !this.props.mmrDistribution) {
       return <Loader />
     } else {
       return (
@@ -40,20 +40,20 @@ class Mmr extends React.Component {
 
 function mapStateToProps(state) {
   const {
-    mmrDistrubitionsLoading,
-    mmrDistributions,
+    mmrDistributionLoading,
+    mmrDistribution,
     errorMessage
   } = state.api
 
   return {
-    mmrDistrubitionsLoading,
-    mmrDistributions,
+    mmrDistributionLoading,
+    mmrDistribution,
     errorMessage  
   }
 }
 
 const mapDispatchToProps = ({
-  fetchMmrDistributions
+  fetchMmrDistribution
 })
 
 export default connect(

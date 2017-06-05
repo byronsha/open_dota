@@ -120,36 +120,36 @@ export function fetchProMatches() {
   }
 }
 
-export function requestMmrDistributions() {
+export function requestMmrDistribution() {
   return {
     type: REQUEST_MMR_DISTRIBUTIONS
   }
 }
 
-export function receiveMmrDistributions(stats) {
+export function receiveMmrDistribution(stats) {
   return {
     type: RECEIVE_MMR_DISTRIBUTIONS,
     stats
   }
 }
 
-export function mmrDistributionsFailure() {
+export function mmrDistributionFailure() {
   return {
     type: MMR_DISTRIBUTIONS_FAILURE
   }
 }
 
-export function fetchMmrDistributions() {
+export function fetchMmrDistribution() {
   return function(dispatch) {
-    dispatch(requestMmrDistributions())
+    dispatch(requestMmrDistribution())
 
     return axios.get(`${API_URL}/distributions`)
       .then(res => {
-        dispatch(receiveMmrDistributions(res.data))
+        dispatch(receiveMmrDistribution(res.data))
       })
       .catch(err => {
         console.log(err)
-        dispatch(mmrDistributionsFailure())
+        dispatch(mmrDistributionFailure())
       })
   }
 }
