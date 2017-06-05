@@ -2,21 +2,29 @@ import {
   REQUEST_HERO_STATS,
   RECEIVE_HERO_STATS,
   HERO_STATS_FAILURE,
+
   REQUEST_PUBLIC_MATCHES,
   RECEIVE_PUBLIC_MATCHES,
   PUBLIC_MATCHES_FAILURE,
+
   REQUEST_PRO_MATCHES,
   RECEIVE_PRO_MATCHES,
-  PRO_MATCHES_FAILURE
+  PRO_MATCHES_FAILURE,
+
+  REQUEST_MMR_DISTRIBUTIONS,
+  RECEIVE_MMR_DISTRIBUTIONS,
+  MMR_DISTRIBUTIONS_FAILURE
 } from '../actions/api'
 
 const initialState = {
-  heroStatsLoading: false,
-  publicMatchesLoading: false,
-  proMatchesLoading: false,
   heroStats: [],
-  publicMatches: [],
+  heroStatsLoading: false,
   proMatches: [],
+  proMatchesLoading: false,
+  publicMatches: [],
+  publicMatchesLoading: false,
+  mmrDistributions: [],
+  mmrDistributionsLoading: false,
   errorMessage: ''
 }
 
@@ -81,6 +89,26 @@ function api(state = initialState, action) {
         proMatchesLoading: false,
         proMatches: [],
         errorMessage: 'Failed to retrieve pro matches'
+      }
+    case REQUEST_MMR_DISTRIBUTIONS:
+      return {
+        ...state,
+        mmrDistributionsLoading: true,
+        errorMessage: ''
+      }
+    case RECEIVE_MMR_DISTRIBUTIONS:
+      return {
+        ...state,
+        mmrDistributionsLoading: false,
+        mmrDistributions: action.stats,
+        errorMessage: ''
+      }
+    case MMR_DISTRIBUTIONS_FAILURE:
+      return {
+        ...state,
+        mmrDistributionsLoading: false,
+        mmrDistributions: [],
+        errorMessage: 'Failed to retrieve MMR distributions'
       }
     default:
       return state

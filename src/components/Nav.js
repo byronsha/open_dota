@@ -14,7 +14,7 @@ const Nav = () => (
     <Container>
       <Link to="/matches" className="item" activeClassName="active">Matches</Link>
       <Link to="/heroes" className="item" activeClassName="active">Heroes</Link>
-      <Link to="/about" className="item" activeClassName="active">About</Link>
+      <Link to="/mmr" className="item" activeClassName="active">MMR</Link>
     </Container>
   </Menu>
 )

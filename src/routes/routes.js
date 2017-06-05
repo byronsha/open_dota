@@ -14,7 +14,7 @@ import HeroStats from '../containers/HeroStats'
 import HeroStatsPro from '../components/hero_stats/HeroStatsPro'
 import HeroStatsPublic from '../components/hero_stats/HeroStatsPublic'
 
-import About from '../containers/About'
+import Mmr from '../containers/Mmr'
 
 const history = syncHistoryWithStore(browserHistory, store)
 
@@ -36,7 +36,7 @@ const Root = () => (
           <Route path="public" component={HeroStatsPublic}/>
         </Route>
 
-        <Route path="/about" component={About} />
+        <Route path="/mmr" component={Mmr} />
       </Route>
     </Router>
   </Provider>

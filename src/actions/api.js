@@ -14,6 +14,10 @@ export const REQUEST_PRO_MATCHES = 'REQUEST_PRO_MATCHES'
 export const RECEIVE_PRO_MATCHES = 'RECEIVE_PRO_MATCHES'
 export const PRO_MATCHES_FAILURE = 'PRO_MATCHES_FAILURE'
 
+export const REQUEST_MMR_DISTRIBUTIONS = 'REQUEST_MMR_DISTRIBUTIONS'
+export const RECEIVE_MMR_DISTRIBUTIONS = 'RECEIVE_MMR_DISTRIBUTIONS'
+export const MMR_DISTRIBUTIONS_FAILURE = 'MMR_DISTRIBUTIONS_FAILURE'
+
 export function requestHeroStats() {
   return {
     type: REQUEST_HERO_STATS
@@ -112,6 +116,40 @@ export function fetchProMatches() {
       .catch(err => {
         console.log(err)
         dispatch(proMatchesFailure())
+      })
+  }
+}
+
+export function requestMmrDistributions() {
+  return {
+    type: REQUEST_MMR_DISTRIBUTIONS
+  }
+}
+
+export function receiveMmrDistributions(stats) {
+  return {
+    type: RECEIVE_MMR_DISTRIBUTIONS,
+    stats
+  }
+}
+
+export function mmrDistributionsFailure() {
+  return {
+    type: MMR_DISTRIBUTIONS_FAILURE
+  }
+}
+
+export function fetchMmrDistributions() {
+  return function(dispatch) {
+    dispatch(requestMmrDistributions())
+
+    return axios.get(`${API_URL}/distributions`)
+      .then(res => {
+        dispatch(receiveMmrDistributions(res.data))
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(mmrDistributionsFailure())
       })
   }
 }

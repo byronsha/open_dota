@@ -35,11 +35,11 @@ const ProMatch = ({ match }) => {
       </Grid.Column>
       <Grid.Column width={4}>
         {match.radiant_win && <Icon name="trophy" color="yellow" />}
-        <span style={{ color: green }}>{match.radiant_name}</span>
+        <span style={{ color: green }}>{match.radiant_name ? match.radiant_name : '?'}</span>
       </Grid.Column>
       <Grid.Column width={4}>
         {!match.radiant_win && <Icon name="trophy" color="yellow" />}
-        <span style={{ color: red }}>{match.dire_name}</span>
+        <span style={{ color: red }}>{match.dire_name ? match.dire_name : '?'}</span>
       </Grid.Column>
     </Grid.Row>
   )
