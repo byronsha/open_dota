@@ -1,0 +1,12 @@
+@import 'styles/heroes';
+@import 'styles/matches';
+@import 'styles/mmr';
+
+body {
+  background: #222;
+  color: white;
+}
+// fix for overflowing react-vis chart
+svg:not(:root) {
+  overflow: visible;
+}

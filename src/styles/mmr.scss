@@ -1,0 +1,18 @@
+.legend {
+  width: 100%;
+  text-align: center;
+
+  .legend-key {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin: 0px 3px;
+    
+    &.blue {
+      background: #2185D0;
+    }
+    &.orange {
+      background: orange;
+    }
+  }
+}
