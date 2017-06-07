@@ -18,6 +18,10 @@ export const REQUEST_MMR_DISTRIBUTIONS = 'REQUEST_MMR_DISTRIBUTIONS'
 export const RECEIVE_MMR_DISTRIBUTIONS = 'RECEIVE_MMR_DISTRIBUTIONS'
 export const MMR_DISTRIBUTIONS_FAILURE = 'MMR_DISTRIBUTIONS_FAILURE'
 
+export const REQUEST_MATCH_DETAILS = 'REQUEST_MATCH_DETAILS'
+export const RECEIVE_MATCH_DETAILS = 'RECEIVE_MATCH_DETAILS'
+export const MATCH_DETAILS_FAILURE = 'MATCH_DETAILS_FAILURE'
+
 export function requestHeroStats() {
   return {
     type: REQUEST_HERO_STATS
@@ -150,6 +154,41 @@ export function fetchMmrDistribution() {
       .catch(err => {
         console.log(err)
         dispatch(mmrDistributionFailure())
+      })
+  }
+}
+
+export function requestMatchDetails() {
+  return {
+    type: REQUEST_MATCH_DETAILS
+  }
+}
+
+export function receiveMatchDetails(match) {
+  return {
+    type: RECEIVE_MATCH_DETAILS,
+    match
+  }
+}
+
+export function matchDetailsFailure(matchId) {
+  return {
+    type: MATCH_DETAILS_FAILURE,
+    matchId
+  }
+}
+
+export function fetchMatchDetails(matchId) {
+  return function(dispatch) {
+    dispatch(requestMatchDetails())
+
+    return axios.get(`${API_URL}/matches/${matchId}`)
+      .then(res => {
+        dispatch(receiveMatchDetails(res.data))
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(matchDetailsFailure(matchId))
       })
   }
 }

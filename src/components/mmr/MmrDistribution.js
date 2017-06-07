@@ -32,17 +32,19 @@ class MmrDistribution extends React.Component {
       <Crosshair values={[value]}>
         <div className="rv-crosshair__inner__content">
           <table style={{ fontSize: '1.1em' }}>
-            <tr>
-              <td colSpan="2" style={{ fontWeight: 'bold' }}>{value.x} MMR</td>
-            </tr>
-            <tr>
-              <td>Players</td>
-              <td style={tdStyle}>{value.y.toLocaleString()}</td>
-            </tr>
-            <tr>
-              <td>Percentile</td>
-              <td style={tdStyle}>{(value.percentile).toFixed(2)}</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td colSpan="2" style={{ fontWeight: 'bold' }}>{value.x} MMR</td>
+              </tr>
+              <tr>
+                <td>Players</td>
+                <td style={tdStyle}>{value.y.toLocaleString()}</td>
+              </tr>
+              <tr>
+                <td>Percentile</td>
+                <td style={tdStyle}>{(value.percentile).toFixed(2)}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </Crosshair>

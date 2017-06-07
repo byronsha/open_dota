@@ -13,7 +13,11 @@ import {
 
   REQUEST_MMR_DISTRIBUTIONS,
   RECEIVE_MMR_DISTRIBUTIONS,
-  MMR_DISTRIBUTIONS_FAILURE
+  MMR_DISTRIBUTIONS_FAILURE,
+ 
+  REQUEST_MATCH_DETAILS,
+  RECEIVE_MATCH_DETAILS,
+  MATCH_DETAILS_FAILURE
 } from '../actions/api'
 
 const initialState = {
@@ -25,6 +29,8 @@ const initialState = {
   publicMatchesLoading: false,
   mmrDistribution: null,
   mmrDistributionLoading: false,
+  matchDetails: null,
+  matchDetailsLoading: false,
   errorMessage: ''
 }
 
@@ -109,6 +115,26 @@ function api(state = initialState, action) {
         mmrDistributionLoading: false,
         mmrDistribution: null,
         errorMessage: 'Failed to retrieve MMR distribution'
+      }
+    case REQUEST_MATCH_DETAILS:
+      return {
+        ...state,
+        matchDetailsLoading: true,
+        errorMessage: ''
+      }
+    case RECEIVE_MATCH_DETAILS:
+      return {
+        ...state,
+        matchDetailsLoading: false,
+        matchDetails: action.match,
+        errorMessage: ''
+      }
+    case MATCH_DETAILS_FAILURE:
+      return {
+        ...state,
+        matchDetailsLoading: false,
+        matchDetails: null,
+        errorMessage: `Failed to retrieve details for Match ID ${action.matchId}`
       }
     default:
       return state
