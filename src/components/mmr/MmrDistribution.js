@@ -33,7 +33,7 @@ class MmrDistribution extends React.Component {
         <div className="rv-crosshair__inner__content">
           <table style={{ fontSize: '1.1em' }}>
             <tr>
-              <td colSpan="2" style={{ fontWeight: 'bold' }}>{value.x.toLocaleString()} MMR</td>
+              <td colSpan="2" style={{ fontWeight: 'bold' }}>{value.x} MMR</td>
             </tr>
             <tr>
               <td>Players</td>

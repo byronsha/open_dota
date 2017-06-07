@@ -3,16 +3,12 @@ import { Container, Grid, Header } from 'semantic-ui-react'
 import ProMatch from './ProMatch'
 import Loader from '../Loader'
 
+const headerStyle = {
+  margin: '60px 0px'
+}
+
 class ProMatches extends React.Component {
   renderMatches() {
-    const sorterStyle = {
-      background: '#1d1d1d',
-      borderBottom: '1px solid #444'
-    }
-
-    const columnStyle = {
-      fontWeight: 'bold'
-    }
 
     if (this.props.proMatchesLoading) {
       return <Loader />
@@ -20,11 +16,11 @@ class ProMatches extends React.Component {
       return (
         <Container style={{ marginBottom: '100px' }}>
           <Grid verticalAlign="middle" columns="equal">
-            <Grid.Row style={sorterStyle}>
-              <Grid.Column width={5} style={columnStyle}>MATCH ID</Grid.Column>
-              <Grid.Column width={3} style={columnStyle}>DURATION</Grid.Column>
-              <Grid.Column width={4} style={columnStyle}>RADIANT</Grid.Column>
-              <Grid.Column width={4} style={columnStyle}>DIRE</Grid.Column>
+            <Grid.Row className="header-row">
+              <Grid.Column width={5}>MATCH ID</Grid.Column>
+              <Grid.Column width={3}>DURATION</Grid.Column>
+              <Grid.Column width={4}>RADIANT</Grid.Column>
+              <Grid.Column width={4}>DIRE</Grid.Column>
             </Grid.Row>
 
             {this.props.proMatches.map(match => (
@@ -36,11 +32,7 @@ class ProMatches extends React.Component {
     }
   }
 
-  render() {
-    const headerStyle = {
-      margin: '60px 0px'
-    }
-    
+  render() {    
     return (
       <div>
         <Header inverted as="h2" textAlign="center" style={headerStyle}>

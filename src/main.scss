@@ -10,3 +10,11 @@ body {
 svg:not(:root) {
   overflow: visible;
 }
+.header-row {
+  background: #1d1d1d;
+  border-bottom: 1px solid #444;
+
+  div {
+    font-weight: bold;
+  }
+}
