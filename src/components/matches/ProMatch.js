@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Image, Icon } from 'semantic-ui-react'
 import ta from 'time-ago'
+import { Link } from 'react-router'
 
 const ProMatch = ({ match }) => {
   function secondsToTime(num) {
@@ -26,7 +27,7 @@ const ProMatch = ({ match }) => {
   return (
     <Grid.Row style={{ padding: '5px 0px', borderBottom: '1px solid #444' }}>
       <Grid.Column width={5}>
-        <div style={{ color: blue }}>{match.match_id}</div>
+        <Link to={`/matches/${match.match_id}`} style={{ color: blue }}>{match.match_id}</Link>
         <div style={{ fontSize: '0.85em', color: '#aaa' }}>{match.league_name}</div>
       </Grid.Column>
       <Grid.Column width={3}>
