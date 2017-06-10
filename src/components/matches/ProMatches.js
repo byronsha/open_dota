@@ -9,7 +9,6 @@ const headerStyle = {
 
 class ProMatches extends React.Component {
   renderMatches() {
-
     if (this.props.proMatchesLoading) {
       return <Loader />
     } else {
