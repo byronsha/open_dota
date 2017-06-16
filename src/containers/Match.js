@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Container } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 import MatchDetails from '../components/match/MatchDetails'
 import MatchPlayers from '../components/match/MatchPlayers'
 import Loader from '../components/Loader'
@@ -15,14 +15,14 @@ class Match extends React.Component {
     const { matchDetails, matchDetailsLoading, errorMessage } = this.props
 
     return (
-      <Container>
+      <Container fluid>
         {(matchDetailsLoading || !matchDetails) ? (
           <Loader />
         ) : (
-          <div>
+          <Grid verticalAlign="middle">
             <MatchDetails matchDetails={matchDetails} />
             <MatchPlayers matchDetails={matchDetails} />
-          </div>
+          </Grid>
         )}
 
         {errorMessage && <div>{errorMessage}</div>}

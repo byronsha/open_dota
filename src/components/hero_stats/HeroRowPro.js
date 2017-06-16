@@ -1,51 +1,74 @@
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import {TableRow, TableRowColumn} from 'material-ui/Table'
+import {
+  blue500,
+  green500,
+  red500
+} from 'material-ui/styles/colors';
 import CountBar from './CountBar'
 import PercentageBar from './PercentageBar'
 
 const BASE_URL = 'https://api.opendota.com'
 
+function getStyles() {
+  return {
+    column10: {
+      width: '10%'
+    },
+    column15: {
+      width: '15%'
+    },
+    column25: {
+      width: '25%',
+      verticalAlign: 'bottom'
+    },
+    image: {
+      width: '95%',
+      marginTop: '2px',
+      marginBottom: '2px'
+    }
+  }
+}
+
 const HeroRowPro = ({ hero, max }) => {
-  const blue = "#2185D0"
-  const green = "#21BA45"
-  const red = "#DB2828"
+  const styles = getStyles()
   
   const { id, localized_name, img, pro_win, pro_pick, pro_ban } = hero
-  if (!pro_win || !pro_pick || !pro_ban) { return <div></div> }
+  if (!pro_win || !pro_pick || !pro_ban) { return null }
   
   return (
-    <Grid.Row style={{ padding: '0px', borderBottom: '1px solid #444', margin: '0px 100px' }}>
-      <Grid.Column computer={1} tablet={2} mobile={2}>
-        <Image fluid src={BASE_URL + img} />
-      </Grid.Column>
-      <Grid.Column width={2}>
+    <TableRow>
+      <TableRowColumn style={styles.column10}>
+        <img src={BASE_URL + img} style={styles.image} />
+      </TableRowColumn>
+      <TableRowColumn style={styles.column15}>
         {localized_name}
-      </Grid.Column>
-      <Grid.Column verticalAlign="bottom">
+      </TableRowColumn>
+      <TableRowColumn style={styles.column25}>
         <PercentageBar
           width={pro_win / pro_pick * 100}
           height={8}
           text={`${(pro_win / pro_pick * 100).toFixed(2)}%`}
-          color={blue}
+          color={blue500}
         />
-      </Grid.Column>
-      <Grid.Column verticalAlign="bottom">
+      </TableRowColumn>
+      <TableRowColumn style={styles.column25}>
         <CountBar
           width={pro_pick / max * 100}
           height={8}
           text={pro_pick.toLocaleString()}
-          color={green}
+          color={green500}
         />
-      </Grid.Column>
-      <Grid.Column verticalAlign="bottom">
+      </TableRowColumn>
+      <TableRowColumn style={styles.column25}>
         <CountBar
           width={pro_ban / max * 100}
           height={8}
           text={pro_ban.toLocaleString()}
-          color={red}
+          color={red500}
         />
-      </Grid.Column>
-    </Grid.Row>
+      </TableRowColumn>
+    </TableRow>
   )
 }
 

@@ -1,41 +1,40 @@
 import React from 'react'
-import { Link } from 'react-router'
-import { Grid, Container } from 'semantic-ui-react'
+import {Tabs, Tab} from 'material-ui/Tabs';
 
-const containerStyle = {
-  paddingTop: '50px',
+const styles = {
+  nav: {
+    marginBottom: '20px'
+  },
+  tabs: {
+    background: 'transparent',
+    borderBottom: '1px solid #666'
+  },
+  tab: {
+    color: 'white',
+    fontWeight: '500',
+    textTransform: 'none'
+  }
 }
 
-const rowStyle = {
-  paddingBottom: '0px',
-  textAlign: 'center'
-}
+class MatchesNav extends React.Component {
+  render() {
+    const {
+      path,
+      router
+    } = this.props
 
-const linkStyle = {
-  color: 'white',
-  display: 'block',
-  marginBottom: '10px'
-}
+    let active = path.split('/')
+    active = active[active.length - 1]
 
-const MatchesNav = ({ path }) => (
-  <Container style={containerStyle}>
-    <Grid columns="equal">
-      <Grid.Row style={rowStyle}>
-        <Grid.Column style={{
-          borderBottom: path.indexOf('pro') !== -1 ? '2px solid #2185D0' : '1px solid #444',
-          margin: '0px 10px'
-        }}>
-          <Link to="/matches/pro" style={linkStyle}>Pro</Link>
-        </Grid.Column>
-        <Grid.Column style={{
-          borderBottom: path.indexOf('public') !== -1 ? '2px solid #2185D0' : '1px solid #444',
-          margin: '0px 10px'
-        }}>
-          <Link to="/matches/public" style={linkStyle}>Public</Link>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
-  </Container>
-)
+    return (
+      <div style={styles.nav}>
+        <Tabs value={active} tabItemContainerStyle={styles.tabs}>
+          <Tab style={styles.tab} onClick={() => {router.push('/matches/pro')}} label="Professional" value="pro" />
+          <Tab style={styles.tab} onClick={() => {router.push('/matches/public')}} label="Public" value="public" />
+        </Tabs>
+      </div>
+    )
+  }
+}
 
 export default MatchesNav

@@ -1,9 +1,13 @@
+$red: #DB2828;
+$green: #21BA45;
+
 @import 'styles/heroes';
+@import 'styles/match';
 @import 'styles/matches';
 @import 'styles/mmr';
 
 body {
-  background: #222;
+  background-color: rgb(48, 48, 48);
   color: white;
 }
 // fix for overflowing react-vis chart
@@ -17,4 +21,23 @@ svg:not(:root) {
   div {
     font-weight: bold;
   }
+}
+.red {
+  color: $red;
+}
+.green {
+  color: $green;
+}
+
+.tiny {
+  font-size: 0.5em;
+}
+.small {
+  font-size: 0.75em;
+}
+.large {
+  font-size: 1.5em;
+}
+.huge {
+  font-size: 2em;
 }

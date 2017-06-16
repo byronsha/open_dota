@@ -22,7 +22,7 @@ class Matches extends React.Component {
   render() {
     return (
       <div>
-        <MatchesNav path={this.props.location.pathname} />
+        <MatchesNav path={this.props.location.pathname} router={this.props.router} />
 
         {this.renderMatches()}
         

@@ -32,7 +32,7 @@ class HeroStats extends React.Component {
   render() {
     return (
       <div>
-        <HeroStatsNav path={this.props.location.pathname} />
+        <HeroStatsNav path={this.props.location.pathname} router={this.props.router} />
 
         {this.renderHeroStats()}
         

@@ -1,7 +1,32 @@
 import React from 'react'
-import { Header, Grid, Container } from 'semantic-ui-react'
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableRow
+} from 'material-ui/Table'
 import HeroRowPro from './HeroRowPro'
 import SortButtonPro from './SortButtonPro'
+
+const styles = {
+  header: {
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    fontSize: '1.5em',
+    margin: '50px'
+  },
+  subheader: {
+    color: '#ccc',
+    fontSize: '0.65em',
+    paddingTop: '8px'
+  },
+  headerRow: {
+    backgroundColor: 'rgb(40, 40, 40)'
+  },
+  column25: {
+    width: '25%'
+  }
+}
 
 class HeroStatsPro extends React.Component {
   getHighestPicks() {
@@ -36,39 +61,33 @@ class HeroStatsPro extends React.Component {
 
   render() {
     const max = Math.max(this.getHighestPicks(), this.getHighestBans())
-    const headerStyle = {
-      margin: '60px 0px'
-    }
-    const sorterStyle = {
-      margin: '0px 100px',
-      background: '#1d1d1d',
-      borderBottom: '1px solid #444'
-    }
     const gameCount = this.countGames()
 
     return (
       <div>
-        <Header inverted as="h2" textAlign="center" style={headerStyle}>
+        <div style={styles.header}>
           Hero Stats for Professional Games
-          <Header.Subheader>
+          <div style={styles.subheader}>
             {gameCount.toLocaleString()} games over the last 30 days
-          </Header.Subheader>
-        </Header>
+          </div>
+        </div>
 
-        <Container fluid style={{ marginBottom: '100px' }}>
-          <Grid verticalAlign="middle" columns="equal">
-            <Grid.Row style={sorterStyle}>
-              <SortButtonPro {...this.props} ownOrderBy="name" text="HERO" width={3} />
-              <SortButtonPro {...this.props} ownOrderBy="winrate" text="WIN %" />
-              <SortButtonPro {...this.props} ownOrderBy="picks" text="PICKS" />
-              <SortButtonPro {...this.props} ownOrderBy="bans" text="BANS" />
-            </Grid.Row>
+        <Table>
+          <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+            <TableRow style={styles.headerRow}>
+              <SortButtonPro {...this.props} ownOrderBy="name" text="HERO" style={styles.column25} />
+              <SortButtonPro {...this.props} ownOrderBy="winrate" text="WIN %" style={styles.column25} />
+              <SortButtonPro {...this.props} ownOrderBy="picks" text="PICKS" style={styles.column25} />
+              <SortButtonPro {...this.props} ownOrderBy="bans" text="BANS" style={styles.column25} />
+            </TableRow>
+          </TableHeader>
 
+          <TableBody>
             {this.props.heroStatsPro.map(hero => (
               <HeroRowPro key={hero.id} hero={hero} max={max} />
             ))}
-          </Grid>
-        </Container>
+          </TableBody>
+        </Table>
       </div>
     )
   }

@@ -1,46 +1,47 @@
 import React from 'react'
-import { Container, Grid, Header } from 'semantic-ui-react' 
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow
+} from 'material-ui/Table'
 import ProMatch from './ProMatch'
 import Loader from '../Loader'
 
-const headerStyle = {
-  margin: '60px 0px'
+const styles = {
+  headerRow: {
+    backgroundColor: 'rgb(40, 40, 40)'
+  },
+  column: {
+    width: '20%'
+  }
 }
 
 class ProMatches extends React.Component {
-  renderMatches() {
+  render() {
     if (this.props.proMatchesLoading) {
       return <Loader />
     } else {
       return (
-        <Container style={{ marginBottom: '100px' }}>
-          <Grid verticalAlign="middle" columns="equal">
-            <Grid.Row className="header-row">
-              <Grid.Column width={5}>MATCH ID</Grid.Column>
-              <Grid.Column width={3}>DURATION</Grid.Column>
-              <Grid.Column width={4}>RADIANT</Grid.Column>
-              <Grid.Column width={4}>DIRE</Grid.Column>
-            </Grid.Row>
+        <Table>
+          <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+            <TableRow style={styles.headerRow}>
+              <TableHeaderColumn>MATCH ID</TableHeaderColumn>
+              <TableHeaderColumn style={styles.column}>DURATION</TableHeaderColumn>
+              <TableHeaderColumn style={styles.column}>RADIANT</TableHeaderColumn>
+              <TableHeaderColumn style={styles.column}>DIRE</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
 
+          <TableBody>
             {this.props.proMatches.map(match => (
               <ProMatch key={match.match_id} match={match} />
             ))}
-          </Grid>
-        </Container>
+          </TableBody>
+        </Table>
       )
     }
-  }
-
-  render() {    
-    return (
-      <div>
-        <Header inverted as="h2" textAlign="center" style={headerStyle}>
-          Pro Matches
-        </Header>
-
-        {this.renderMatches()}
-      </div>
-    )
   }
 }
 

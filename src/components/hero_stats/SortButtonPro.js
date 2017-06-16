@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Icon } from 'semantic-ui-react'
+import {TableHeaderColumn} from 'material-ui/Table'
+import {Icon} from 'semantic-ui-react'
 
 const SortButtonPro = ({
   text,
@@ -10,7 +11,7 @@ const SortButtonPro = ({
   proSetOrderBy,
   proSetOrderDirection
 }) => (
-  <Grid.Column
+  <TableHeaderColumn
     width={width}
     onClick={() => {
       if (proOrderBy !== ownOrderBy) {
@@ -25,7 +26,7 @@ const SortButtonPro = ({
     <span style={{ fontWeight: 'bold' }}>{text}</span>
     {proOrderBy === ownOrderBy && proOrderDirection === 'desc' && <Icon name="long arrow down"/>}
     {proOrderBy === ownOrderBy && proOrderDirection === 'asc' && <Icon name="long arrow up"/>}
-  </Grid.Column>
+  </TableHeaderColumn>
 )
 
 export default SortButtonPro

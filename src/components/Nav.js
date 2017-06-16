@@ -1,22 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router'
-import { Container, Menu } from 'semantic-ui-react'
+import {Link} from 'react-router'
+import MenuItem from 'material-ui/MenuItem';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
-const style = {
-  marginBottom: '0px',
-  border: 'none',
-  boxShadow: 'none',
-  borderRadius: '0px'
+const styles = {
+  link: {
+    color: 'white'
+  }
 }
 
 const Nav = () => (
-  <Menu borderless inverted size="huge" style={style}>
-    <Container>
-      <Link to="/matches" className="item" activeClassName="active">Matches</Link>
-      <Link to="/heroes" className="item" activeClassName="active">Heroes</Link>
-      <Link to="/mmr" className="item" activeClassName="active">MMR</Link>
-    </Container>
-  </Menu>
+  <Toolbar>
+    <ToolbarGroup firstChild={true}>
+      <MenuItem>
+        <Link to="/matches" style={styles.link}>Matches</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/heroes" style={styles.link}>Heroes</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/mmr" style={styles.link}>MMR</Link>
+      </MenuItem>
+    </ToolbarGroup>
+  </Toolbar>
 )
 
 export default Nav

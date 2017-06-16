@@ -1,13 +1,21 @@
 import React from 'react'
 import Nav from '../components/Nav'
 
+const styles = {
+  mainContent: {
+    margin: '50px 250px'
+  }
+}
+
 class App extends React.Component {
   render() {
     return (
       <div>
         <Nav />
         
-        {this.props.children}
+        <div style={styles.mainContent}>
+          {this.props.children}
+        </div>
       </div>
     )
   }
