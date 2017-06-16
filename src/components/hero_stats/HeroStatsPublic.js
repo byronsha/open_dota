@@ -1,17 +1,53 @@
 import React from 'react'
-import { Header, Grid, Container } from 'semantic-ui-react'
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableRow
+} from 'material-ui/Table'
 import HeroRowPublic from './HeroRowPublic'
 import SortButtonPublic from './SortButtonPublic'
 
+const styles = {
+  header: {
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    fontSize: '1.5em',
+    margin: '50px'
+  },
+  subheader: {
+    color: '#ccc',
+    fontSize: '0.65em',
+    paddingTop: '8px'
+  },
+  headerRow: {
+    backgroundColor: 'rgb(40, 40, 40)'
+  },
+  column25: {
+    width: '25%'
+  },
+  column7p5: {
+    width: '7.5%',
+    paddingLeft: '0px'
+  }
+}
+
 class HeroStatsPublic extends React.Component {
   getHighestPicks() {
-    let max = 0
-    for (let hero of this.props.heroStatsPublic) {
-      let newMax = Math.max(
-        hero['1000_pick'], hero['2000_pick'], hero['3000_pick'],
-        hero['4000_pick'], hero['5000_pick']
-      )
-      if (newMax > max) { max = newMax }  
+    let max = {
+      '1000_pick': 0,
+      '2000_pick': 0,
+      '3000_pick': 0,
+      '4000_pick': 0,
+      '5000_pick': 0
+    }
+
+    for (let bracket of Object.keys(max)) {
+      for (let hero of this.props.heroStatsPublic) {
+        if (hero[bracket] > max[bracket]) {
+          max[bracket] = hero[bracket]
+        }
+      }
     }
     return max
   }
@@ -26,47 +62,41 @@ class HeroStatsPublic extends React.Component {
   }
 
   render() {
-    const max = this.getHighestPicks()
-    const headerStyle = {
-      margin: '60px 0px'
-    }
-    const sorterStyle = {
-      margin: '0px 100px',
-      background: '#1d1d1d',
-      borderBottom: '1px solid #444'
-    }
+    const maxes = this.getHighestPicks()
     const gameCount = this.countGames()
 
     return (
       <div>
-        <Header inverted as="h2" textAlign="center" style={headerStyle}>
+        <div style={styles.header}>
           Hero Stats for Public Games
-          <Header.Subheader>
+          <div style={styles.subheader}>
             ~{gameCount.toLocaleString()} games over the last 30 days
-          </Header.Subheader>
-        </Header>
+          </div>
+        </div>
 
-        <Container fluid style={{ marginBottom: '100px' }}>
-          <Grid verticalAlign="middle" columns="equal">
-            <Grid.Row style={sorterStyle}>
-              <SortButtonPublic {...this.props} ownOrderBy="name" text="HERO" width={3} />
-              <SortButtonPublic {...this.props} ownOrderBy="5k_winrate" text="5K+ W%" />
-              <SortButtonPublic {...this.props} ownOrderBy="5k_picks" text="5K+ P" />
-              <SortButtonPublic {...this.props} ownOrderBy="4k_winrate" text="4K+ W%" />
-              <SortButtonPublic {...this.props} ownOrderBy="4k_picks" text="4K+ P" />
-              <SortButtonPublic {...this.props} ownOrderBy="3k_winrate" text="3K+ W%" />
-              <SortButtonPublic {...this.props} ownOrderBy="3k_picks" text="3K+ P" />
-              <SortButtonPublic {...this.props} ownOrderBy="2k_winrate" text="2K+ W%" />
-              <SortButtonPublic {...this.props} ownOrderBy="2k_picks" text="2K+ P" />
-              <SortButtonPublic {...this.props} ownOrderBy="1k_winrate" text="1K+ W%" />
-              <SortButtonPublic {...this.props} ownOrderBy="1k_picks" text="1K+ P" />
-            </Grid.Row>
-            
+        <Table>
+          <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
+            <TableRow style={styles.headerRow}>
+              <SortButtonPublic {...this.props} ownOrderBy="name" text="HERO" style={styles.column25} />
+              <SortButtonPublic {...this.props} ownOrderBy="5k_winrate" text="5K+ W%" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="5k_picks" text="5K+ P" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="4k_winrate" text="4K+ W%" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="4k_picks" text="4K+ P" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="3k_winrate" text="3K+ W%" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="3k_picks" text="3K+ P" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="2k_winrate" text="2K+ W%" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="2k_picks" text="2K+ P" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="1k_winrate" text="1K+ W%" style={styles.column7p5} />
+              <SortButtonPublic {...this.props} ownOrderBy="1k_picks" text="1K+ P" style={styles.column7p5} />
+            </TableRow>
+          </TableHeader>
+
+          <TableBody>
             {this.props.heroStatsPublic.map(hero => (
-              <HeroRowPublic key={hero.id} hero={hero} max={max} />
+              <HeroRowPublic key={hero.id} hero={hero} maxes={maxes} />
             ))}
-          </Grid>
-        </Container>
+          </TableBody>
+        </Table>
       </div>
     )
   }

@@ -45,10 +45,11 @@ const PublicMatch = ({ match }) => {
     const heroName = heroes[id].name.replace('npc_dota_hero_', '')
 
     return (
-      <div style={styles.imageContainer}>
+      <div
+        key={match.match_id + id}
+        style={styles.imageContainer}>
         <img
           style={styles.image}
-          key={match.match_id + id}
           src={`${IMAGE_URL}${heroName}_full.png`}
         />
       </div>

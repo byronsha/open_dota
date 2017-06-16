@@ -10,29 +10,26 @@ import PercentageBar from './PercentageBar'
 
 const BASE_URL = 'https://api.opendota.com'
 
-function getStyles() {
-  return {
-    column10: {
-      width: '10%'
-    },
-    column15: {
-      width: '15%'
-    },
-    column25: {
-      width: '25%',
-      verticalAlign: 'bottom'
-    },
-    image: {
-      width: '95%',
-      marginTop: '2px',
-      marginBottom: '2px'
-    }
+const styles = {
+  column10: {
+    width: '10%'
+  },
+  column15: {
+    paddingLeft: '0px',
+    width: '15%'
+  },
+  column25: {
+    width: '25%',
+    verticalAlign: 'bottom'
+  },
+  image: {
+    width: '95%',
+    marginTop: '2px',
+    marginBottom: '2px'
   }
 }
 
 const HeroRowPro = ({ hero, max }) => {
-  const styles = getStyles()
-  
   const { id, localized_name, img, pro_win, pro_pick, pro_ban } = hero
   if (!pro_win || !pro_pick || !pro_ban) { return null }
   
