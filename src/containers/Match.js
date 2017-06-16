@@ -1,10 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Container, Grid } from 'semantic-ui-react'
-import MatchDetails from '../components/match/MatchDetails'
-import MatchPlayers from '../components/match/MatchPlayers'
+import {connect} from 'react-redux'
+import {Container, Grid} from 'semantic-ui-react'
+import MatchNav from '../components/match/MatchNav'
 import Loader from '../components/Loader'
-import { fetchMatchDetails } from '../actions/api'
+import {fetchMatchDetails} from '../actions/api'
 
 class Match extends React.Component {
   componentDidMount() {
@@ -12,21 +11,26 @@ class Match extends React.Component {
   }
 
   render() {
-    const { matchDetails, matchDetailsLoading, errorMessage } = this.props
+    const {
+      matchDetails,
+      matchDetailsLoading,
+      errorMessage,
+      location,
+      router,
+      children
+    } = this.props
+
+    if (matchDetailsLoading || !matchDetails) {
+      return <Loader />
+    }
 
     return (
-      <Container fluid>
-        {(matchDetailsLoading || !matchDetails) ? (
-          <Loader />
-        ) : (
-          <Grid verticalAlign="middle">
-            <MatchDetails matchDetails={matchDetails} />
-            <MatchPlayers matchDetails={matchDetails} />
-          </Grid>
-        )}
+      <div>
+        <MatchNav path={location.pathname} router={router} />
+        {children && React.cloneElement(children, {...this.props})}
 
         {errorMessage && <div>{errorMessage}</div>}
-      </Container>
+      </div>
     )
   }
 }

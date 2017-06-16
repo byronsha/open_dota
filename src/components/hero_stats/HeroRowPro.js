@@ -5,8 +5,8 @@ import {
   green500,
   red500
 } from 'material-ui/styles/colors';
-import CountBar from './CountBar'
-import PercentageBar from './PercentageBar'
+import CountBar from '../CountBar'
+import PercentageBar from '../PercentageBar'
 
 const BASE_URL = 'https://api.opendota.com'
 

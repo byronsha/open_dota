@@ -30,15 +30,18 @@ class HeroStats extends React.Component {
   }
 
   render() {
+    const {
+      location,
+      router,
+      errorMessage
+    } = this.props
+
     return (
       <div>
-        <HeroStatsNav path={this.props.location.pathname} router={this.props.router} />
-
+        <HeroStatsNav path={location.pathname} router={router} />
         {this.renderHeroStats()}
         
-        {this.props.errorMessage.length > 0 &&
-          <div>{this.props.errorMessage}</div>
-        }
+        {errorMessage && <div>{errorMessage}</div>}
       </div>
     )
   }

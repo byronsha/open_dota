@@ -11,6 +11,9 @@ import ProMatches from '../components/matches/ProMatches'
 import PublicMatches from '../components/matches/PublicMatches'
 
 import Match from '../containers/Match'
+import Overview from '../components/match/Overview'
+import Scoreboard from '../components/match/Scoreboard'
+import Graphs from '../components/match/Graphs'
 
 import HeroStats from '../containers/HeroStats'
 import HeroStatsPro from '../components/hero_stats/HeroStatsPro'
@@ -34,7 +37,12 @@ const Root = () => (
           <Route path="public" component={PublicMatches} />
         </Route>
 
-        <Route path="matches/:match_id" component={Match} />
+        <Route path="matches/:match_id" component={Match}>
+          <IndexRedirect to="/matches/:match_id/overview" />
+          <Route path="overview" component={Overview} />
+          <Route path="scoreboard" component={Scoreboard} />
+          <Route path="graphs" component={Graphs} />
+        </Route>
 
         <Route path="heroes" component={HeroStats}>
           <IndexRedirect to="/heroes/pro" />        
