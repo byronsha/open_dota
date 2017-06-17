@@ -31,12 +31,8 @@ const styles = {
   }
 }
 
-function renderHeroImage(id) {
-  const heroName = heroes[id].name.replace('npc_dota_hero_', '')
-  return <img width="100%" src={`${IMAGE_URL}${heroName}_full.png`} />
-}
-
 const PlayerRow = ({player, maxes}) => {
+  const heroName = heroes[player.hero_id].name.replace('npc_dota_hero_', '')
   const data = {
     'kills': blue500,
     'deaths': red500,
@@ -54,7 +50,7 @@ const PlayerRow = ({player, maxes}) => {
   return (
     <TableRow>
       <TableRowColumn style={styles.imageColumn}>
-        {renderHeroImage(player.hero_id)}
+        <img width="100%" src={`${IMAGE_URL}${heroName}_full.png`} />
       </TableRowColumn>
       <TableRowColumn width="15%">
         {player.personaname}

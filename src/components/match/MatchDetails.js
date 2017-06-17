@@ -52,7 +52,7 @@ const styles = {
   }
 }
 
-const MatchDetails = ({ matchDetails }) => {
+const MatchDetails = ({matchDetails}) => {
   const {
     match_id,
     duration,

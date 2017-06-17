@@ -24,8 +24,8 @@ const SortButtonPro = ({
     }}
   >
     <span>{text}</span>
-    {proOrderBy === ownOrderBy && proOrderDirection === 'desc' && <Icon name="long arrow down"/>}
-    {proOrderBy === ownOrderBy && proOrderDirection === 'asc' && <Icon name="long arrow up"/>}
+    {proOrderBy === ownOrderBy && proOrderDirection === 'desc' && <Icon name="long arrow down" />}
+    {proOrderBy === ownOrderBy && proOrderDirection === 'asc' && <Icon name="long arrow up" />}
   </TableHeaderColumn>
 )
 
