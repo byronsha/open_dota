@@ -17,7 +17,11 @@ import {
  
   REQUEST_MATCH_DETAILS,
   RECEIVE_MATCH_DETAILS,
-  MATCH_DETAILS_FAILURE
+  MATCH_DETAILS_FAILURE,
+
+  REQUEST_ITEMS,
+  RECEIVE_ITEMS,
+  ITEMS_FAILURE
 } from '../actions/api'
 
 const initialState = {
@@ -31,6 +35,8 @@ const initialState = {
   mmrDistributionLoading: false,
   matchDetails: null,
   matchDetailsLoading: false,
+  items: [],
+  itemsLoading: false,
   errorMessage: ''
 }
 
@@ -135,6 +141,26 @@ function api(state = initialState, action) {
         matchDetailsLoading: false,
         matchDetails: null,
         errorMessage: `Failed to retrieve details for Match ID ${action.matchId}`
+      }
+    case REQUEST_ITEMS:
+      return {
+        ...state,
+        itemsLoading: true,
+        errorMessage: ''
+      }
+    case RECEIVE_ITEMS:
+      return {
+        ...state,
+        itemsLoading: false,
+        items: action.items,
+        errorMessage: ''
+      }
+    case ITEMS_FAILURE:
+      return {
+        ...state,
+        itemsLoading: false,
+        items: [],
+        errorMessage: 'Failed to retrieve items'
       }
     default:
       return state

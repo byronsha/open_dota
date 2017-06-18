@@ -13,9 +13,10 @@ const styles = {
   column10: {
     width: '10%'
   },
-  column15: {
+  column12: {
     paddingLeft: '0px',
-    width: '15%'
+    paddingRight: '18px',
+    width: '12%'
   },
   column7p5: {
     width: '7.5%',
@@ -52,7 +53,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
       <TableRowColumn style={styles.column10}>
         <img src={BASE_URL + img} style={styles.image} />
       </TableRowColumn>
-      <TableRowColumn style={styles.column15}>
+      <TableRowColumn style={styles.column12}>
         {localized_name}
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>

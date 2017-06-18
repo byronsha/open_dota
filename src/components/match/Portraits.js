@@ -1,7 +1,8 @@
 import React from 'react'
 import heroes from '../../constants/heroes'
 import {Icon} from 'semantic-ui-react'
-import {GridList, GridTile} from 'material-ui/GridList';
+import {GridList, GridTile} from 'material-ui/GridList'
+import PlayerItems from './PlayerItems'
 
 const IMAGE_URL = 'https://api.opendota.com/apps/dota2/images/heroes/'
 
@@ -22,12 +23,18 @@ const styles = {
     width: '100%',
     marginTop: '10px',
     marginBottom: '10px'
+  },
+  items: {
+    width: '90%',
+    textAlign: 'left',
+    margin: '10px auto'
   }
 }
 
 const Portrait = ({player}) => {
   const heroName = heroes[player.hero_id].name.replace('npc_dota_hero_', '')
   const {
+    account_id,
     name,
     personaname,
     kills,
@@ -47,6 +54,11 @@ const Portrait = ({player}) => {
         {total_gold.toLocaleString()}
       </div>
       <div>{kills} / {deaths} / {assists}</div>
+
+      <PlayerItems
+        player={player}
+        containerStyle={styles.items}  
+      />
     </GridTile>
   )
 }
@@ -57,7 +69,7 @@ const Portraits = ({matchDetails}) => {
 
   return (
     <div style={styles.container}>
-      <GridList cols={11}>
+      <GridList cols={11} cellHeight={500}>
         {radiant.map(player => (
           <Portrait key={player.account_id} player={player} />
         ))}

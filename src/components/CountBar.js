@@ -1,17 +1,23 @@
 import React from 'react'
 
-const CountBar = ({ height, width, color, text }) => (
-  <div>
-    <div style={{paddingBottom: '10px'}}>
-      {text}
-    </div>
-    <div style={{
+const CountBar = ({height, width, color, text}) => {
+  const styles = {
+    text: {
+      paddingBottom: '8px'
+    },
+    bar: {
       height: `${height}px`,
       width: `${width}%`,
       background: color
-    }}>
+    }
+  }
+
+  return (
+    <div>
+      <div style={styles.text}>{text}</div>
+      <div style={styles.bar}></div>
     </div>
-  </div>
-)
+  )
+}
 
 export default CountBar

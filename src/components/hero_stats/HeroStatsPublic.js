@@ -23,12 +23,13 @@ const styles = {
   headerRow: {
     backgroundColor: 'rgb(40, 40, 40)'
   },
-  column25: {
-    width: '25%'
+  column22: {
+    width: '22%'
   },
   column7p5: {
     width: '7.5%',
-    paddingLeft: '0px'
+    paddingLeft: '0px',
+    paddingRight: '18px'
   }
 }
 
@@ -77,7 +78,7 @@ class HeroStatsPublic extends React.Component {
         <Table>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow style={styles.headerRow}>
-              <SortButtonPublic {...this.props} ownOrderBy="name" text="HERO" style={styles.column25} />
+              <SortButtonPublic {...this.props} ownOrderBy="name" text="HERO" style={styles.column22} />
               <SortButtonPublic {...this.props} ownOrderBy="5k_winrate" text="5K+ W%" style={styles.column7p5} />
               <SortButtonPublic {...this.props} ownOrderBy="5k_picks" text="5K+ P" style={styles.column7p5} />
               <SortButtonPublic {...this.props} ownOrderBy="4k_winrate" text="4K+ W%" style={styles.column7p5} />

@@ -36,7 +36,7 @@ const styles = {
 }
 
 const headers = [
-  'Player','','LVL','K','D','A','LH',
+  'Player','','LVL', 'Items', 'K','D','A','LH',
   'DN','GPM','XPM','HD','HH','TD','G'
 ]
 
@@ -56,14 +56,20 @@ const Team = ({players, maxes}) => {
       <Table>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow style={styles.headerRow}>
-            {headers.map((header, index) => (
-              <TableHeaderColumn
-                key={header}
-                width={index === 1 ? '15%' : 'auto'}
-                style={index > 2 ? styles.column : null}>
-                {header}
-              </TableHeaderColumn>
-            ))}
+            {headers.map((header, index) => {
+              let width
+              if (header === '') {width = '12%'}
+              if (header === 'LVL') {width = '3%'}
+
+              return (
+                <TableHeaderColumn
+                  key={header}
+                  width={width}
+                  style={index > 1 ? styles.column : null}>
+                  {header}
+                </TableHeaderColumn>
+              )
+            })}
           </TableRow>
         </TableHeader>
 

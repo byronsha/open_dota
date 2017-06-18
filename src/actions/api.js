@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-const API_URL = 'https://api.opendota.com/api'
-
 export const REQUEST_HERO_STATS = 'REQUEST_HERO_STATS'
 export const RECEIVE_HERO_STATS = 'RECEIVE_HERO_STATS'
 export const HERO_STATS_FAILURE = 'HERO_STATS_FAILURE'
@@ -21,6 +19,12 @@ export const MMR_DISTRIBUTIONS_FAILURE = 'MMR_DISTRIBUTIONS_FAILURE'
 export const REQUEST_MATCH_DETAILS = 'REQUEST_MATCH_DETAILS'
 export const RECEIVE_MATCH_DETAILS = 'RECEIVE_MATCH_DETAILS'
 export const MATCH_DETAILS_FAILURE = 'MATCH_DETAILS_FAILURE'
+
+export const REQUEST_ITEMS = 'REQUEST_ITEMS'
+export const RECEIVE_ITEMS = 'RECEIVE_ITEMS'
+export const ITEMS_FAILURE = 'ITEMS_FAILURE'
+
+const API_URL = 'https://api.opendota.com/api'
 
 export function requestHeroStats() {
   return {
@@ -189,6 +193,42 @@ export function fetchMatchDetails(matchId) {
       .catch(err => {
         console.log(err)
         dispatch(matchDetailsFailure(matchId))
+      })
+  }
+}
+
+export function requestItems() {
+  return {
+    type: REQUEST_ITEMS
+  }
+}
+
+export function receiveItems(items) {
+  return {
+    type: RECEIVE_ITEMS,
+    items
+  }
+}
+
+export function itemsFailure() {
+  return {
+    type: ITEMS_FAILURE
+  }
+}
+
+export function fetchItems() {
+  return function(dispatch) {
+    dispatch(requestItems())
+    
+    const sql = 'SELECT * FROM Items'.replace(' ', '%20')
+
+    return axios.get(`${API_URL}/explorer?sql=${sql}`)
+      .then(res => {
+        dispatch(receiveItems(res.data.rows))
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(itemsFailure())
       })
   }
 }

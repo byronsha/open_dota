@@ -12,6 +12,7 @@ import {
 } from 'material-ui/styles/colors';
 import heroes from '../../constants/heroes'
 import CountBar from '../CountBar'
+import PlayerItems from './PlayerItems'
 
 const IMAGE_URL = 'https://api.opendota.com/apps/dota2/images/heroes/'
 
@@ -27,7 +28,16 @@ const styles = {
   },
   level: {
     color: amber500,
-    fontWeight: '500'
+    width: '3%',
+    paddingLeft: '8px',
+    paddingRight: '8px'
+  },
+  items: {
+    width: '100%'
+  },
+  itemsColumn: {
+    padding: '0px 8px',
+    whiteSpace: 'wrap'
   }
 }
 
@@ -52,12 +62,19 @@ const PlayerRow = ({player, maxes}) => {
       <TableRowColumn style={styles.imageColumn}>
         <img width="100%" src={`${IMAGE_URL}${heroName}_full.png`} />
       </TableRowColumn>
-      <TableRowColumn width="15%">
+      <TableRowColumn width="12%">
         {player.personaname}
       </TableRowColumn>
       <TableRowColumn style={styles.level}>
         {player.level}
       </TableRowColumn>
+      <TableRowColumn style={styles.itemsColumn}>
+        <PlayerItems
+          player={player}
+          containerStyle={styles.items}  
+        />
+      </TableRowColumn>
+
       {Object.keys(data).map(stat => (
         <TableRowColumn
           key={stat}

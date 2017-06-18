@@ -1,8 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import Loader from '../components/Loader'
 import HeroStatsNav from '../components/hero_stats/HeroStatsNav'
-import { fetchHeroStats } from '../actions/api'
+import {fetchHeroStats} from '../actions/api'
 import {
   proSetOrderBy,
   proSetOrderDirection,
@@ -144,13 +144,26 @@ function orderPublicHeroStats(stats, orderBy, direction) {
 }
 
 function mapStateToProps(state) {
-  const { heroStatsLoading, heroStats, errorMessage } = state.api
-  const { proOrderBy, proOrderDirection, publicOrderBy, publicOrderDirection } = state.heroStats
+  const {
+    heroStatsLoading,
+    heroStats,
+    errorMessage
+  } = state.api
+
+  const {
+    proOrderBy,
+    proOrderDirection,
+    publicOrderBy,
+    publicOrderDirection
+  } = state.heroStats
+
+  const proStats = orderProHeroStats(heroStats, proOrderBy, proOrderDirection)
+  const publicStats = orderPublicHeroStats(heroStats, publicOrderBy, publicOrderDirection)
 
   return {
     heroStatsLoading,
-    heroStatsPro: orderProHeroStats(heroStats, proOrderBy, proOrderDirection),
-    heroStatsPublic: orderPublicHeroStats(heroStats, publicOrderBy, publicOrderDirection),
+    heroStatsPro: proStats,
+    heroStatsPublic: publicStats,
     errorMessage,
     proOrderBy,
     proOrderDirection,

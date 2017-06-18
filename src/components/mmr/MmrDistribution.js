@@ -19,8 +19,18 @@ const FlexibleXYPlot = makeWidthFlexible(XYPlot)
 
 const styles = {
   chartContainer: {
-    paddingTop: '50px',
     paddingLeft: '15px'
+  },
+  header: {
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    fontSize: '1.5em',
+    margin: '50px'
+  },
+  subheader: {
+    color: '#ccc',
+    fontSize: '0.65em',
+    paddingTop: '8px'
   },
   hint: {
     borderRadius: '0px',
@@ -99,10 +109,11 @@ class MmrDistribution extends React.Component {
     const { mmrDistribution } = this.props
     let barData = []
     let lineData = []
+    let totalPlayers = mmrDistribution.mmr.sum.count
     
     for (let row of mmrDistribution.mmr.rows) {
       let { bin_name, count, cumulative_sum } = row
-      let percentile = cumulative_sum / mmrDistribution.mmr.sum.count * 100
+      let percentile = cumulative_sum / totalPlayers * 100
 
       barData.push({
         x: bin_name,
@@ -118,6 +129,13 @@ class MmrDistribution extends React.Component {
 
     return (
       <div style={styles.chartContainer}>
+        <div style={styles.header}>
+          Solo MMR Distribution
+          <div style={styles.subheader}>
+            {totalPlayers.toLocaleString()} players
+          </div>
+        </div>
+        
         <FlexibleXYPlot height={500}>
           <YAxis title="Players" style={styles.axis}/>
           <XAxis title="MMR" style={styles.axis}/>
