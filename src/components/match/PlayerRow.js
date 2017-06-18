@@ -57,13 +57,15 @@ const PlayerRow = ({player, maxes}) => {
     'total_gold': amber500
   }
 
+  let playerName = player.name ? player.name : player.personaname
+
   return (
     <TableRow>
       <TableRowColumn style={styles.imageColumn}>
         <img width="100%" src={`${IMAGE_URL}${heroName}_full.png`} />
       </TableRowColumn>
       <TableRowColumn width="12%">
-        {player.personaname}
+        {playerName ? playerName : '?'}
       </TableRowColumn>
       <TableRowColumn style={styles.level}>
         {player.level}

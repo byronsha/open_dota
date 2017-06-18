@@ -14,6 +14,9 @@ const radiantImgUrl = 'https://hydra-media.cursecdn.com/dota2.gamepedia.com/2/2a
 const direImgUrl = 'https://hydra-media.cursecdn.com/dota2.gamepedia.com/0/0e/Dire_icon.png?version=61ef19f438bb0575a432a67365755dac'
 
 const styles = {
+  container: {
+    paddingBottom: '25px'
+  },
   headerRow: {
     backgroundColor: 'rgb(40, 40, 40)'
   },
@@ -47,7 +50,7 @@ const Team = ({players, maxes}) => {
   const imageUrl = isRadiant ? radiantImgUrl : direImgUrl
   
   return (
-    <div>
+    <div style={styles.container}>
       <div>
         <img src={imageUrl} style={styles.teamImage} />
         <div style={nameStyle}>{isRadiant ? 'Radiant' : 'Dire'}</div>
