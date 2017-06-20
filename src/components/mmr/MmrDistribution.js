@@ -2,14 +2,13 @@ import React from 'react'
 import {
   blue500,
   orange500
-} from 'material-ui/styles/colors';
+} from 'material-ui/styles/colors'
 import {
   XYPlot,
   XAxis,
   YAxis,
   VerticalBarSeries,
-  LineSeries,
-  Hint,
+  LineMarkSeries,
   Crosshair,
   makeWidthFlexible 
 } from 'react-vis'
@@ -23,7 +22,6 @@ const styles = {
   },
   header: {
     textAlign: 'center',
-    fontFamily: 'Roboto',
     fontSize: '1.5em',
     margin: '50px'
   },
@@ -33,8 +31,7 @@ const styles = {
     paddingTop: '8px'
   },
   hint: {
-    borderRadius: '0px',
-    fontFamily: 'Roboto'
+    borderRadius: '0px'
   },
   hintTable: {
     fontSize: '1.1em'
@@ -145,9 +142,11 @@ class MmrDistribution extends React.Component {
             data={barData}
             onNearestX={value => this.setState({ value })}
           />
-          <LineSeries
+          <LineMarkSeries
             color={orange500}
             data={lineData}
+            size={2}
+            curve={'curveMonotoneX'}
           />
 
           {this.renderHint()}

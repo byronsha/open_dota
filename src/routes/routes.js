@@ -14,6 +14,9 @@ import Match from '../containers/Match'
 import Overview from '../components/match/Overview'
 import Scoreboard from '../components/match/Scoreboard'
 import Graphs from '../components/match/Graphs'
+import GoldGraph from '../components/match/GoldGraph'
+import XpGraph from '../components/match/XpGraph'
+import NetWorthGraph from '../components/match/NetWorthGraph'
 
 import HeroStats from '../containers/HeroStats'
 import HeroStatsPro from '../components/hero_stats/HeroStatsPro'
@@ -41,7 +44,12 @@ const Root = () => (
           <IndexRedirect to="/matches/:match_id/overview" />
           <Route path="overview" component={Overview} />
           <Route path="scoreboard" component={Scoreboard} />
-          <Route path="graphs" component={Graphs} />
+          <Route path="graphs" component={Graphs}>
+            <IndexRedirect to="/matches/:match_id/graphs/gold" />
+            <Route path="gold" component={GoldGraph} />
+            <Route path="exp" component={XpGraph} />
+            <Route path="net_worth" component={NetWorthGraph} />
+          </Route>
         </Route>
 
         <Route path="heroes" component={HeroStats}>

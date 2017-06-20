@@ -13,7 +13,6 @@ import countries from '../../constants/countries'
 const styles = {
   header: {
     textAlign: 'center',
-    fontFamily: 'Roboto',
     fontSize: '1.5em',
     margin: '50px'
   },

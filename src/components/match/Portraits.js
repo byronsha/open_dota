@@ -11,8 +11,7 @@ const styles = {
     paddingTop: '50px'
   },
   gridTile: {
-    textAlign: 'center',
-    fontFamily: 'Roboto'
+    textAlign: 'center'
   },
   playerName: {
     whiteSpace: 'nowrap',

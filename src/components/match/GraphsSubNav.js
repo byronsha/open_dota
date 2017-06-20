@@ -3,37 +3,37 @@ import {Tabs, Tab} from 'material-ui/Tabs'
 
 const styles = {
   nav: {
-    marginBottom: '20px'
+    marginBottom: '20px',
+    width: '50%'
   },
   tabs: {
     background: 'transparent',
     borderBottom: '1px solid #666'
   },
   tab: {
-    color: 'white',
-    fontWeight: '500',
+    color: '#ddd',
+    height: '36px',
+    fontSize: '0.85em',
+    fontWeight: '400',
     textTransform: 'capitalize'
   }
 }
 
-class MatchNav extends React.Component {
+class GraphsSubNav extends React.Component {
   handleClick = route => {
     const {router} = this.props
     const path = router.location.pathname
     let newPath = path.split('/')
     newPath.pop()
-    if (path.indexOf('/graphs/') !== -1) {
-      newPath.pop()
-    }
     newPath.push(route)
     router.push(newPath.join('/'))
   }
 
   render() {
     const {router} = this.props
-    const tabs = ['overview', 'scoreboard', 'graphs']
+    const tabs = ['gold', 'exp', 'net_worth']
     const pathArr = router.location.pathname.split('/')
-    const active = pathArr.indexOf('graphs') !== -1 ? 'graphs' : pathArr[pathArr.length - 1]
+    const active = pathArr[pathArr.length - 1]
 
     return (
       <div style={styles.nav}>
@@ -42,7 +42,7 @@ class MatchNav extends React.Component {
             <Tab
               key={tab}
               value={tab}
-              label={tab}
+              label={tab.replace('_', ' ')}
               style={styles.tab}
               onClick={() => this.handleClick(tab)}
             />
@@ -53,4 +53,4 @@ class MatchNav extends React.Component {
   }
 }
 
-export default MatchNav
+export default GraphsSubNav

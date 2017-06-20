@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Container, Grid} from 'semantic-ui-react'
 import MatchNav from '../components/match/MatchNav'
+import GraphsSubNav from '../components/match/GraphsSubNav'
 import Loader from '../components/Loader'
 import {fetchMatchDetails} from '../actions/api'
 
@@ -19,6 +20,7 @@ class Match extends React.Component {
       router,
       children
     } = this.props
+    const showGraphsSubNav = location.pathname.indexOf('/graphs/') !== -1 ? true : false
 
     if (matchDetailsLoading || !matchDetails) {
       return <Loader />
@@ -26,7 +28,9 @@ class Match extends React.Component {
 
     return (
       <div>
-        <MatchNav path={location.pathname} router={router} />
+        <MatchNav router={router} />
+        {showGraphsSubNav && <GraphsSubNav router={router} />}
+
         {children && React.cloneElement(children, {...this.props})}
 
         {errorMessage && <div>{errorMessage}</div>}

@@ -28,7 +28,7 @@ function getMaxes(players) {
   return maxes
 }
 
-const Scoreboard = ({ matchDetails }) => {
+const Scoreboard = ({matchDetails}) => {
   const radiant = matchDetails.players.filter(player => player.player_slot < 100)
   const dire = matchDetails.players.filter(player => player.player_slot > 100)
   const maxes = getMaxes(matchDetails.players)

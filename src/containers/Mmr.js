@@ -26,7 +26,7 @@ class Mmr extends React.Component {
   render() {
     return (
       <div>
-        <MmrNav path={this.props.location.pathname} router={this.props.router} />
+        <MmrNav router={this.props.router} />
 
         {this.renderMmr()}
 

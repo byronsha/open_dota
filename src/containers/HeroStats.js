@@ -38,7 +38,7 @@ class HeroStats extends React.Component {
 
     return (
       <div>
-        <HeroStatsNav path={location.pathname} router={router} />
+        <HeroStatsNav router={router} />
         {this.renderHeroStats()}
         
         {errorMessage && <div>{errorMessage}</div>}

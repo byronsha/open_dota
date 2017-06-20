@@ -18,11 +18,8 @@ const styles = {
 
 class MatchesNav extends React.Component {
   render() {
-    const {
-      path,
-      router
-    } = this.props
-
+    const {router} = this.props
+    const path = router.location.pathname
     let active = path.split('/')
     active = active[active.length - 1]
 

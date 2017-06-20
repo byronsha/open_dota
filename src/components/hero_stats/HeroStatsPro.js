@@ -11,7 +11,6 @@ import SortButtonPro from './SortButtonPro'
 const styles = {
   header: {
     textAlign: 'center',
-    fontFamily: 'Roboto',
     fontSize: '1.5em',
     margin: '50px'
   },
@@ -22,6 +21,10 @@ const styles = {
   },
   headerRow: {
     backgroundColor: 'rgb(40, 40, 40)'
+  },
+  table: {
+    minWidth: '1400px',
+    overflowX: 'auto'
   }
 }
 
@@ -69,7 +72,7 @@ class HeroStatsPro extends React.Component {
           </div>
         </div>
 
-        <Table>
+        <Table bodyStyle={styles.table} headerStyle={styles.table}>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow style={styles.headerRow}>
               <SortButtonPro {...this.props} ownOrderBy="name" text="HERO" width={'25%'} />

@@ -21,7 +21,6 @@ const styles = {
     backgroundColor: 'rgb(40, 40, 40)'
   },
   team: {
-    fontFamily: 'Roboto',
     fontSize: '1.5em',
     display: 'inline-block',
     verticalAlign: 'middle'
@@ -35,6 +34,10 @@ const styles = {
   column: {
     paddingLeft: '8px',
     paddingRight: '8px'
+  },
+  table: {
+    minWidth: '1400px',
+    overflowX: 'auto'
   }
 }
 
@@ -56,7 +59,7 @@ const Team = ({players, maxes}) => {
         <div style={nameStyle}>{isRadiant ? 'Radiant' : 'Dire'}</div>
       </div>
 
-      <Table>
+      <Table bodyStyle={styles.table} headerStyle={styles.table}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow style={styles.headerRow}>
             {headers.map((header, index) => {

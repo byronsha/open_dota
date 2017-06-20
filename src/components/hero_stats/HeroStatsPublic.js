@@ -11,7 +11,6 @@ import SortButtonPublic from './SortButtonPublic'
 const styles = {
   header: {
     textAlign: 'center',
-    fontFamily: 'Roboto',
     fontSize: '1.5em',
     margin: '50px'
   },
@@ -30,6 +29,10 @@ const styles = {
     width: '7.5%',
     paddingLeft: '0px',
     paddingRight: '18px'
+  },
+  table: {
+    minWidth: '1400px',
+    overflowX: 'auto'
   }
 }
 
@@ -75,7 +78,7 @@ class HeroStatsPublic extends React.Component {
           </div>
         </div>
 
-        <Table>
+        <Table bodyStyle={styles.table} headerStyle={styles.table}>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow style={styles.headerRow}>
               <SortButtonPublic {...this.props} ownOrderBy="name" text="HERO" style={styles.column22} />
