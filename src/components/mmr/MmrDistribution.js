@@ -138,14 +138,14 @@ class MmrDistribution extends React.Component {
           <XAxis title="MMR" style={styles.axis}/>
           
           <VerticalBarSeries
-            color={blue500}
             data={barData}
+            color={blue500}
             onNearestX={value => this.setState({ value })}
           />
           <LineMarkSeries
-            color={orange500}
             data={lineData}
             size={2}
+            color={orange500}
             curve={'curveMonotoneX'}
           />
 

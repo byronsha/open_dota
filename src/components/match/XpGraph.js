@@ -62,7 +62,7 @@ class XpGraph extends React.Component {
   }
 
   renderHint() {
-    const {value} = this.state
+    const { value } = this.state
     if (!value) { return null }
 
     return (
@@ -75,7 +75,7 @@ class XpGraph extends React.Component {
   }
 
   render() {
-    const {matchDetails} = this.props
+    const { matchDetails } = this.props
     const xpArr = matchDetails.radiant_xp_adv
 
     if (!xpArr) {
@@ -84,7 +84,7 @@ class XpGraph extends React.Component {
   
     const totalMinutes = xpArr.length - 1
     const data = xpArr.map((exp, index) => {
-      return {x: index, y: exp}
+      return { x: index, y: exp }
     })
 
     return (
