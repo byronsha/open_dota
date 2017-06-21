@@ -22,8 +22,11 @@ const styles = {
     paddingTop: '8px'
   },
   headerRow: {
-    backgroundColor: 'rgb(40, 40, 40)'
-  }
+    backgroundColor: 'rgb(38, 38, 52)'
+  },
+  table: {
+    backgroundColor: 'rgb(48, 48, 62)'
+  },
 }
 
 function renderFlag(country) {
@@ -66,7 +69,7 @@ const CountryMmrs = ({mmrDistribution}) => {
         </div>
       </div>
 
-      <Table>
+      <Table style={styles.table}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow style={styles.headerRow}>
             {headers.map(header => (

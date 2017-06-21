@@ -11,7 +11,10 @@ import Loader from '../Loader'
 
 const styles = {
   headerRow: {
-    backgroundColor: 'rgb(40, 40, 40)'
+    backgroundColor: 'rgb(38, 38, 52)'
+  },
+  table: {
+    backgroundColor: 'rgb(48, 48, 62)'
   },
   column20: {
     width: '20%'
@@ -27,7 +30,7 @@ class PublicMatches extends React.Component {
       return <Loader />
     } else {
       return (
-        <Table>
+        <Table style={styles.table}>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow style={styles.headerRow}>
               <TableHeaderColumn style={styles.column20}>MATCH ID</TableHeaderColumn>

@@ -5,7 +5,7 @@ import {fetchItems} from '../actions/api'
 
 const styles = {
   app: {
-    margin: '50px 250px'
+    margin: '50px 250px 25px 250px'
   }
 }
 

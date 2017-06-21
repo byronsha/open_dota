@@ -15,10 +15,10 @@ const direImgUrl = 'https://hydra-media.cursecdn.com/dota2.gamepedia.com/0/0e/Di
 
 const styles = {
   container: {
-    paddingBottom: '25px'
+    paddingBottom: '20px'
   },
   headerRow: {
-    backgroundColor: 'rgb(40, 40, 40)'
+    backgroundColor: 'rgb(38, 38, 52)'
   },
   team: {
     fontSize: '1.5em',
@@ -36,6 +36,9 @@ const styles = {
     paddingRight: '8px'
   },
   table: {
+    backgroundColor: 'rgb(48, 48, 62)'
+  },
+  tableScroll: {
     minWidth: '1400px',
     overflowX: 'auto'
   }
@@ -53,13 +56,13 @@ const Team = ({players, maxes}) => {
   const imageUrl = isRadiant ? radiantImgUrl : direImgUrl
   
   return (
-    <div style={styles.container}>
+    <div style={isRadiant ? styles.container : null}>
       <div>
         <img src={imageUrl} style={styles.teamImage} />
         <div style={nameStyle}>{isRadiant ? 'Radiant' : 'Dire'}</div>
       </div>
 
-      <Table bodyStyle={styles.table} headerStyle={styles.table}>
+      <Table bodyStyle={styles.tableScroll} headerStyle={styles.tableScroll} style={styles.table}>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow style={styles.headerRow}>
             {headers.map((header, index) => {

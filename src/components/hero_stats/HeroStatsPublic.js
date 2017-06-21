@@ -20,7 +20,7 @@ const styles = {
     paddingTop: '8px'
   },
   headerRow: {
-    backgroundColor: 'rgb(40, 40, 40)'
+    backgroundColor: 'rgb(38, 38, 52)'
   },
   column22: {
     width: '22%'
@@ -31,6 +31,9 @@ const styles = {
     paddingRight: '18px'
   },
   table: {
+    backgroundColor: 'rgb(48, 48, 62)'
+  },
+  tableScroll: {
     minWidth: '1400px',
     overflowX: 'auto'
   }
@@ -78,7 +81,7 @@ class HeroStatsPublic extends React.Component {
           </div>
         </div>
 
-        <Table bodyStyle={styles.table} headerStyle={styles.table}>
+        <Table bodyStyle={styles.tableScroll} headerStyle={styles.tableScroll} style={styles.table}>
           <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
             <TableRow style={styles.headerRow}>
               <SortButtonPublic {...this.props} ownOrderBy="name" text="HERO" style={styles.column22} />
