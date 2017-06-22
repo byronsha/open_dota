@@ -4,11 +4,11 @@ import {
   TableRowColumn
 } from 'material-ui/Table'
 import {
-  blue500,
+  blueA700,
   blueGrey500,
-  green500,
-  red500,
-  amber500
+  greenA700,
+  redA700,
+  amberA700
 } from 'material-ui/styles/colors';
 import heroes from '../../constants/heroes'
 import CountBar from '../CountBar'
@@ -23,11 +23,10 @@ const styles = {
     verticalAlign: 'bottom'
   },
   imageColumn: {
-    paddingRight: '0px',
-    minWidth: '150px'
+    paddingRight: '0px'
   },
   level: {
-    color: amber500,
+    color: amberA700,
     width: '3%',
     paddingLeft: '8px',
     paddingRight: '8px'
@@ -44,9 +43,9 @@ const styles = {
 const PlayerRow = ({player, maxes}) => {
   const heroName = heroes[player.hero_id].name.replace('npc_dota_hero_', '')
   const data = {
-    'kills': blue500,
-    'deaths': red500,
-    'assists': green500,
+    'kills': blueA700,
+    'deaths': redA700,
+    'assists': greenA700,
     'last_hits': blueGrey500,
     'denies': blueGrey500,
     'gold_per_min': blueGrey500,
@@ -54,7 +53,7 @@ const PlayerRow = ({player, maxes}) => {
     'hero_damage': blueGrey500,
     'hero_healing': blueGrey500,
     'tower_damage': blueGrey500,
-    'total_gold': amber500
+    'total_gold': amberA700
   }
 
   let playerName = player.name ? player.name : player.personaname

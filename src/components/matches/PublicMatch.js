@@ -3,7 +3,7 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table'
-import {blue500} from 'material-ui/styles/colors';
+import {blueA700} from 'material-ui/styles/colors';
 import {Link} from 'react-router'
 import ta from 'time-ago'
 import {secondsToTime} from '../../util'
@@ -12,12 +12,8 @@ import heroes from '../../constants/heroes'
 const IMAGE_URL = 'https://api.opendota.com/apps/dota2/images/heroes/'
 
 const styles = {
-  subText: {
-    fontSize: '0.9em',
-    color: '#ccc'
-  },
   blue: {
-    color: blue500
+    color: blueA700
   },
   column20: {
     width: '20%'
@@ -25,13 +21,10 @@ const styles = {
   column30: {
     width: '30%'
   },
-  imageContainer: {
-    width: '20%',
-    padding: '2px',
-    display: 'inline-block'
-  },
   image: {
-    width: '100%'
+    width: '20%',
+    display: 'inline-block',
+    margin: '2px'
   }
 }
 
@@ -45,14 +38,11 @@ const PublicMatch = ({ match }) => {
     const heroName = heroes[id].name.replace('npc_dota_hero_', '')
 
     return (
-      <div
+      <img
         key={match.match_id + id}
-        style={styles.imageContainer}>
-        <img
-          style={styles.image}
-          src={`${IMAGE_URL}${heroName}_full.png`}
-        />
-      </div>
+        style={styles.image}
+        src={`${IMAGE_URL}${heroName}_full.png`}
+      />
     )
   }
 
@@ -60,16 +50,16 @@ const PublicMatch = ({ match }) => {
     <TableRow>
       <TableRowColumn style={styles.column20}>
         <Link to={`/matches/${match.match_id}`} style={styles.blue}>{match.match_id} ></Link>
-        <div style={styles.subText}>{match.avg_mmr} MMR</div>
+        <div>{match.avg_mmr} MMR</div>
       </TableRowColumn>
       <TableRowColumn style={styles.column20}>
         <div>{duration}</div>
-        <div style={styles.subText}>{timeAgo}</div>
+        <div>{timeAgo}</div>
       </TableRowColumn>
-      <TableRowColumn style={styles.column30}>
+      <TableRowColumn>
         {radiant}
       </TableRowColumn>
-      <TableRowColumn style={styles.column30}>
+      <TableRowColumn>
         {dire}
       </TableRowColumn>
     </TableRow>

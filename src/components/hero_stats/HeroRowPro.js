@@ -1,9 +1,9 @@
 import React from 'react'
 import {TableRow, TableRowColumn} from 'material-ui/Table'
 import {
-  blue500,
-  green500,
-  red500
+  blueA700,
+  greenA700,
+  redA700
 } from 'material-ui/styles/colors';
 import CountBar from '../CountBar'
 import PercentageBar from '../PercentageBar'
@@ -46,7 +46,7 @@ const HeroRowPro = ({ hero, max }) => {
           width={pro_win / pro_pick * 100}
           height={8}
           text={`${(pro_win / pro_pick * 100).toFixed(2)}%`}
-          color={blue500}
+          color={blueA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column25}>
@@ -54,7 +54,7 @@ const HeroRowPro = ({ hero, max }) => {
           width={pro_pick / max * 100}
           height={8}
           text={pro_pick.toLocaleString()}
-          color={green500}
+          color={greenA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column25}>
@@ -62,7 +62,7 @@ const HeroRowPro = ({ hero, max }) => {
           width={pro_ban / max * 100}
           height={8}
           text={pro_ban.toLocaleString()}
-          color={red500}
+          color={redA700}
         />
       </TableRowColumn>
     </TableRow>

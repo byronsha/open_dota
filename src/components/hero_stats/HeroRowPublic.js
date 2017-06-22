@@ -1,8 +1,8 @@
 import React from 'react'
 import {TableRow, TableRowColumn} from 'material-ui/Table'
 import {
-  blue500,
-  green500
+  blueA700,
+  greenA700
 } from 'material-ui/styles/colors';
 import CountBar from '../CountBar'
 import PercentageBar from '../PercentageBar'
@@ -61,7 +61,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={fiveKWin / fiveKPick * 100}
           height={8}
           text={`${(fiveKWin / fiveKPick * 100).toFixed(2)}%`}
-          color={blue500}
+          color={blueA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -69,7 +69,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={fiveKPick / fiveKMax * 100}
           height={8}
           text={fiveKPick.toLocaleString()}
-          color={green500}
+          color={greenA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -77,7 +77,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={fourKWin / fourKPick * 100}
           height={8}
           text={`${(fourKWin / fourKPick * 100).toFixed(2)}%`}
-          color={blue500}
+          color={blueA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -85,7 +85,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={fourKPick / fourKMax * 100}
           height={8}
           text={fourKPick.toLocaleString()}
-          color={green500}
+          color={greenA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -93,7 +93,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={threeKWin / threeKPick * 100}
           height={8}
           text={`${(threeKWin / threeKPick * 100).toFixed(2)}%`}
-          color={blue500}
+          color={blueA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -101,7 +101,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={threeKPick / threeKMax * 100}
           height={8}
           text={threeKPick.toLocaleString()}
-          color={green500}
+          color={greenA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -109,7 +109,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={twoKWin / twoKPick * 100}
           height={8}
           text={`${(twoKWin / twoKPick * 100).toFixed(2)}%`}
-          color={blue500}
+          color={blueA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -117,7 +117,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={twoKPick / twoKMax * 100}
           height={8}
           text={twoKPick.toLocaleString()}
-          color={green500}
+          color={greenA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -125,7 +125,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={oneKWin / oneKPick * 100}
           height={8}
           text={`${(oneKWin / oneKPick * 100).toFixed(2)}%`}
-          color={blue500}
+          color={blueA700}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -133,7 +133,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={oneKPick / oneKMax * 100}
           height={8}
           text={oneKPick.toLocaleString()}
-          color={green500}
+          color={greenA700}
         />
       </TableRowColumn>
     </TableRow>

@@ -4,9 +4,9 @@ import {
   TableRowColumn
 } from 'material-ui/Table'
 import {
-  blue500,
-  green500,
-  red500
+  blueA700,
+  greenA700,
+  redA700
 } from 'material-ui/styles/colors';
 import {Icon} from 'semantic-ui-react'
 import ta from 'time-ago'
@@ -14,18 +14,14 @@ import {Link} from 'react-router'
 import {secondsToTime} from '../../util'
   
 const styles = {
-  subText: {
-    fontSize: '0.9em',
-    color: '#ccc'
-  },
   blue: {
-    color: blue500
+    color: blueA700
   },
   green: {
-    color: green500
+    color: greenA700
   },
   red: {
-    color: red500
+    color: redA700
   },
   column: {
     width: '20%'
@@ -40,11 +36,11 @@ const ProMatch = ({ match }) => {
     <TableRow>
       <TableRowColumn>
         <Link to={`/matches/${match.match_id}`} style={styles.blue}>{match.match_id} ></Link>
-        <div style={styles.subText}>{match.league_name}</div>
+        <div>{match.league_name}</div>
       </TableRowColumn>
       <TableRowColumn style={styles.column}>
         <div>{duration}</div>
-        <div style={styles.subText}>{timeAgo}</div>
+        <div>{timeAgo}</div>
       </TableRowColumn>
       <TableRowColumn style={styles.column}>
         {match.radiant_win && <Icon name="trophy" color="yellow" />}

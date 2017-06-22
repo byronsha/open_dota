@@ -7,7 +7,7 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table'
-import {green500, red500} from 'material-ui/styles/colors';
+import {greenA700, redA700} from 'material-ui/styles/colors';
 import PlayerRow from './PlayerRow'
 
 const radiantImgUrl = 'https://hydra-media.cursecdn.com/dota2.gamepedia.com/2/2a/Radiant_icon.png?version=9ab15dc8d602efb06c1a95e4d0e274e8'
@@ -52,7 +52,7 @@ const headers = [
 const Team = ({players, maxes}) => {
   const isRadiant = players[0].player_slot < 100 ? true : false
   const nameStyle = styles.team
-  styles.team.color = isRadiant ? green500 : red500
+  styles.team.color = isRadiant ? greenA700 : redA700
   const imageUrl = isRadiant ? radiantImgUrl : direImgUrl
   
   return (
