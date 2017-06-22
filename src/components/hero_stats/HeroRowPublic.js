@@ -1,7 +1,7 @@
 import React from 'react'
 import {TableRow, TableRowColumn} from 'material-ui/Table'
 import {
-  blueA700,
+  blueA200,
   greenA700
 } from 'material-ui/styles/colors';
 import CountBar from '../CountBar'
@@ -61,7 +61,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={fiveKWin / fiveKPick * 100}
           height={8}
           text={`${(fiveKWin / fiveKPick * 100).toFixed(2)}%`}
-          color={blueA700}
+          color={blueA200}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -77,7 +77,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={fourKWin / fourKPick * 100}
           height={8}
           text={`${(fourKWin / fourKPick * 100).toFixed(2)}%`}
-          color={blueA700}
+          color={blueA200}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -93,7 +93,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={threeKWin / threeKPick * 100}
           height={8}
           text={`${(threeKWin / threeKPick * 100).toFixed(2)}%`}
-          color={blueA700}
+          color={blueA200}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -109,7 +109,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={twoKWin / twoKPick * 100}
           height={8}
           text={`${(twoKWin / twoKPick * 100).toFixed(2)}%`}
-          color={blueA700}
+          color={blueA200}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>
@@ -125,7 +125,7 @@ const HeroRowPublic = ({ hero, maxes }) => {
           width={oneKWin / oneKPick * 100}
           height={8}
           text={`${(oneKWin / oneKPick * 100).toFixed(2)}%`}
-          color={blueA700}
+          color={blueA200}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>

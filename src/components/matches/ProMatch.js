@@ -4,7 +4,7 @@ import {
   TableRowColumn
 } from 'material-ui/Table'
 import {
-  blueA700,
+  blueA200,
   greenA700,
   redA700
 } from 'material-ui/styles/colors';
@@ -15,7 +15,7 @@ import {secondsToTime} from '../../util'
   
 const styles = {
   blue: {
-    color: blueA700
+    color: blueA200
   },
   green: {
     color: greenA700
@@ -25,30 +25,56 @@ const styles = {
   },
   column: {
     width: '20%'
+  },
+  striped: {
+    backgroundColor: 'rgb(58, 58, 72)'
   }
 }
 
 const ProMatch = ({ match }) => {
-  const duration = secondsToTime(match.duration)
-  const timeAgo = ta().ago(match.start_time * 1000)
+  let {
+    duration,
+    start_time,
+    match_id,
+    league_name,
+    radiant_win,
+    radiant_name,
+    dire_name
+  } = match
+
+  const timeDuration = secondsToTime(duration)
+  const timeAgo = ta().ago(start_time * 1000)
 
   return (
-    <TableRow>
+    <TableRow >
       <TableRowColumn>
-        <Link to={`/matches/${match.match_id}`} style={styles.blue}>{match.match_id} ></Link>
-        <div>{match.league_name}</div>
+        <Link to={`/matches/${match_id}`} style={styles.blue}>
+          {match_id} >
+        </Link>
+        <div>{league_name}</div>
       </TableRowColumn>
+
       <TableRowColumn style={styles.column}>
-        <div>{duration}</div>
+        <div>{timeDuration}</div>
         <div>{timeAgo}</div>
       </TableRowColumn>
+
       <TableRowColumn style={styles.column}>
-        {match.radiant_win && <Icon name="trophy" color="yellow" />}
-        <span style={styles.green}>{match.radiant_name ? match.radiant_name : '?'}</span>
+        {radiant_win &&
+          <Icon name="trophy" color="yellow" />
+        }
+        <span style={styles.green}>
+          {radiant_name ? radiant_name : '?'}
+        </span>
       </TableRowColumn>
+
       <TableRowColumn style={styles.column}>
-        {!match.radiant_win && <Icon name="trophy" color="yellow" />}
-        <span style={styles.red}>{match.dire_name ? match.dire_name : '?'}</span>
+        {!radiant_win &&
+          <Icon name="trophy" color="yellow" />
+        }
+        <span style={styles.red}>
+          {dire_name ? dire_name : '?'}
+        </span>
       </TableRowColumn>
     </TableRow>
   )

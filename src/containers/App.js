@@ -17,7 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav router={this.props.router}/>
         
         <div style={styles.app}>
           {this.props.children}

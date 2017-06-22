@@ -1,7 +1,7 @@
 import React from 'react'
 import {TableRow, TableRowColumn} from 'material-ui/Table'
 import {
-  blueA700,
+  blueA200,
   greenA700,
   redA700
 } from 'material-ui/styles/colors';
@@ -46,7 +46,7 @@ const HeroRowPro = ({ hero, max }) => {
           width={pro_win / pro_pick * 100}
           height={8}
           text={`${(pro_win / pro_pick * 100).toFixed(2)}%`}
-          color={blueA700}
+          color={blueA200}
         />
       </TableRowColumn>
       <TableRowColumn style={styles.column25}>

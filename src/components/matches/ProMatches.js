@@ -11,10 +11,11 @@ import Loader from '../Loader'
 
 const styles = {
   headerRow: {
-    backgroundColor: 'rgb(38, 38, 52)'
+    backgroundColor: 'rgb(38, 38, 52)',
+    borderBottom: 'none'
   },
   table: {
-    backgroundColor: 'rgb(48, 48, 62)'
+    background: 'transparent'
   },
   column: {
     width: '20%'
@@ -39,7 +40,10 @@ class ProMatches extends React.Component {
 
           <TableBody>
             {this.props.proMatches.map(match => (
-              <ProMatch key={match.match_id} match={match} />
+              <ProMatch
+                key={match.match_id}
+                match={match}
+              />
             ))}
           </TableBody>
         </Table>

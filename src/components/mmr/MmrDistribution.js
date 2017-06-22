@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  blueA700,
+  blueA200,
   orange500
 } from 'material-ui/styles/colors'
 import {
@@ -59,7 +59,7 @@ const styles = {
     height: '12px',
     display: 'inline-block',
     margin: '0px 10px',
-    background: blueA700
+    background: blueA200
   },
   legendKeyOrange: {
     width: '12px',
@@ -139,7 +139,7 @@ class MmrDistribution extends React.Component {
           
           <VerticalBarSeries
             data={barData}
-            color={blueA700}
+            color={blueA200}
             onNearestX={value => this.setState({ value })}
           />
           <LineMarkSeries

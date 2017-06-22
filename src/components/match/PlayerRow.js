@@ -4,7 +4,7 @@ import {
   TableRowColumn
 } from 'material-ui/Table'
 import {
-  blueA700,
+  blueA200,
   blueGrey500,
   greenA700,
   redA700,
@@ -43,7 +43,7 @@ const styles = {
 const PlayerRow = ({player, maxes}) => {
   const heroName = heroes[player.hero_id].name.replace('npc_dota_hero_', '')
   const data = {
-    'kills': blueA700,
+    'kills': blueA200,
     'deaths': redA700,
     'assists': greenA700,
     'last_hits': blueGrey500,
@@ -63,7 +63,7 @@ const PlayerRow = ({player, maxes}) => {
       <TableRowColumn style={styles.imageColumn}>
         <img width="100%" src={`${IMAGE_URL}${heroName}_full.png`} />
       </TableRowColumn>
-      <TableRowColumn width="12%">
+      <TableRowColumn width="10%">
         {playerName ? playerName : '?'}
       </TableRowColumn>
       <TableRowColumn style={styles.level}>

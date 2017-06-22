@@ -3,7 +3,7 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table'
-import {blueA700} from 'material-ui/styles/colors';
+import {blueA200} from 'material-ui/styles/colors';
 import {Link} from 'react-router'
 import ta from 'time-ago'
 import {secondsToTime} from '../../util'
@@ -13,7 +13,7 @@ const IMAGE_URL = 'https://api.opendota.com/apps/dota2/images/heroes/'
 
 const styles = {
   blue: {
-    color: blueA700
+    color: blueA200
   },
   column20: {
     width: '20%'

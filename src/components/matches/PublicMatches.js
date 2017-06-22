@@ -14,7 +14,7 @@ const styles = {
     backgroundColor: 'rgb(38, 38, 52)'
   },
   table: {
-    backgroundColor: 'rgb(48, 48, 62)'
+    background: 'transparent'
   },
   column20: {
     width: '20%'

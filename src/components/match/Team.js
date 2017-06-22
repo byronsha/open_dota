@@ -7,7 +7,10 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table'
-import {greenA700, redA700} from 'material-ui/styles/colors';
+import {
+  greenA700,
+  redA700
+} from 'material-ui/styles/colors'
 import PlayerRow from './PlayerRow'
 
 const radiantImgUrl = 'https://hydra-media.cursecdn.com/dota2.gamepedia.com/2/2a/Radiant_icon.png?version=9ab15dc8d602efb06c1a95e4d0e274e8'
@@ -36,7 +39,7 @@ const styles = {
     paddingRight: '8px'
   },
   table: {
-    backgroundColor: 'rgb(48, 48, 62)'
+    backgroundColor: 'transparent'
   },
   tableScroll: {
     minWidth: '1400px',
@@ -45,11 +48,11 @@ const styles = {
 }
 
 const headers = [
-  'Player','','LVL', 'Items', 'K','D','A','LH',
-  'DN','GPM','XPM','HD','HH','TD','G'
+  'Player','','LVL', 'Items', 'K','D','A',
+  'LH', 'DN','GPM','XPM','HD','HH','TD','G'
 ]
 
-const Team = ({players, maxes}) => {
+const Team = ({ players, maxes }) => {
   const isRadiant = players[0].player_slot < 100 ? true : false
   const nameStyle = styles.team
   styles.team.color = isRadiant ? greenA700 : redA700
@@ -62,12 +65,16 @@ const Team = ({players, maxes}) => {
         <div style={nameStyle}>{isRadiant ? 'Radiant' : 'Dire'}</div>
       </div>
 
-      <Table bodyStyle={styles.tableScroll} headerStyle={styles.tableScroll} style={styles.table}>
+      <Table
+        style={styles.table}
+        bodyStyle={styles.tableScroll}
+        headerStyle={styles.tableScroll}
+      >
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow style={styles.headerRow}>
             {headers.map((header, index) => {
               let width
-              if (header === '') {width = '12%'}
+              if (header === '') {width = '10%'}
               if (header === 'LVL') {width = '3%'}
 
               return (
