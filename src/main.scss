@@ -17,3 +17,35 @@ body {
 svg:not(:root) {
   overflow: visible;
 }
+
+.scoreboard {
+  margin-left: 200px;
+  
+  th:first-child,
+  td:first-child {
+    position: absolute !important;
+    left: 0px;
+    top: auto;
+    z-index: 1;
+    width: 290px;
+    box-shadow: 5px 0px 2px rgb(28, 28, 42);
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  th:first-child {
+    padding-top: 14px;
+    background-color: rgb(38, 38, 52);
+  }
+  td:first-child {
+    background-color: rgb(48, 48, 62) !important;    
+  }
+
+  ::-webkit-scrollbar {
+    background-color: #fff;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgb(38, 38, 52);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(58, 58, 72);
+  }
+}

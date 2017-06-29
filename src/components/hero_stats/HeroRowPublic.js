@@ -10,13 +10,13 @@ import PercentageBar from '../PercentageBar'
 const BASE_URL = 'https://api.opendota.com'
 
 const styles = {
-  column10: {
-    width: '10%'
+  column8: {
+    width: '8%'
   },
-  column12: {
+  column17: {
     paddingLeft: '0px',
     paddingRight: '18px',
-    width: '12%'
+    width: '17%'
   },
   column7p5: {
     width: '7.5%',
@@ -24,9 +24,7 @@ const styles = {
     verticalAlign: 'bottom'
   },
   image: {
-    width: '95%',
-    marginTop: '2px',
-    marginBottom: '2px'
+    maxWidth: '85px'
   }
 }
 
@@ -50,10 +48,10 @@ const HeroRowPublic = ({ hero, maxes }) => {
 
   return (
     <TableRow>
-      <TableRowColumn style={styles.column10}>
+      <TableRowColumn style={styles.column8}>
         <img src={BASE_URL + img} style={styles.image} />
       </TableRowColumn>
-      <TableRowColumn style={styles.column12}>
+      <TableRowColumn style={styles.column17}>
         {localized_name}
       </TableRowColumn>
       <TableRowColumn style={styles.column7p5}>

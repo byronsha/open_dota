@@ -15,7 +15,9 @@ const Nav = ({ router }) => {
     <Toolbar>
       <ToolbarGroup firstChild={true}>
         {links.map(link => (
-          <MenuItem onClick={() => router.push(`/${link}`)}>
+          <MenuItem 
+            key={link}
+            onClick={() => router.push(`/${link}`)}>
             {link.toUpperCase()}
           </MenuItem>
         ))}

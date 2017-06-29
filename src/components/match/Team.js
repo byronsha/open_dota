@@ -18,7 +18,7 @@ const direImgUrl = 'https://hydra-media.cursecdn.com/dota2.gamepedia.com/0/0e/Di
 
 const styles = {
   container: {
-    paddingBottom: '20px'
+    paddingTop: '65px'
   },
   headerRow: {
     backgroundColor: 'rgb(38, 38, 52)'
@@ -31,8 +31,8 @@ const styles = {
   teamImage: {
     display: 'inline-block',
     verticalAlign: 'middle',
-    width: '2.5%',
-    margin: '10px 10px 10px 22px'
+    width: '30px',
+    marginRight: '10px'
   },
   column: {
     paddingLeft: '8px',
@@ -42,14 +42,14 @@ const styles = {
     backgroundColor: 'transparent'
   },
   tableScroll: {
-    minWidth: '1400px',
+    minWidth: '1200px',
     overflowX: 'auto'
   }
 }
 
 const headers = [
-  'Player','','LVL', 'Items', 'K','D','A',
-  'LH', 'DN','GPM','XPM','HD','HH','TD','G'
+  'K','D','A', 'G', 'Items', 'LH',
+  'DN','GPM','XPM','HD','HH'
 ]
 
 const Team = ({ players, maxes }) => {
@@ -59,12 +59,7 @@ const Team = ({ players, maxes }) => {
   const imageUrl = isRadiant ? radiantImgUrl : direImgUrl
   
   return (
-    <div style={isRadiant ? styles.container : null}>
-      <div>
-        <img src={imageUrl} style={styles.teamImage} />
-        <div style={nameStyle}>{isRadiant ? 'Radiant' : 'Dire'}</div>
-      </div>
-
+    <div className="scoreboard" style={styles.container}>
       <Table
         style={styles.table}
         bodyStyle={styles.tableScroll}
@@ -72,16 +67,23 @@ const Team = ({ players, maxes }) => {
       >
         <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
           <TableRow style={styles.headerRow}>
+            <TableHeaderColumn>
+              <img src={imageUrl} style={styles.teamImage} />
+              <div style={nameStyle}>{isRadiant ? 'Radiant' : 'Dire'}</div>
+            </TableHeaderColumn>
+
             {headers.map((header, index) => {
-              let width
-              if (header === '') {width = '10%'}
-              if (header === 'LVL') {width = '3%'}
+              let width = 'auto'
+              let columnStyle = Object.assign({}, styles.column)
+              if (header === 'Items') {
+                width = '300px'
+              }
 
               return (
                 <TableHeaderColumn
                   key={header}
                   width={width}
-                  style={index > 1 ? styles.column : null}>
+                  style={columnStyle}>
                   {header}
                 </TableHeaderColumn>
               )

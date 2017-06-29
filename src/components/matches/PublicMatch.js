@@ -23,8 +23,8 @@ const styles = {
   },
   image: {
     width: '20%',
+    maxWidth: '85px',
     display: 'inline-block',
-    margin: '2px'
   }
 }
 

@@ -20,7 +20,7 @@ class Item extends React.Component {
       const item = items.filter(item => item.id === itemId)[0]  
       const itemName = item.name.replace('item_', '')
 
-      return <img src={`${IMAGE_URL}${itemName}_lg.png`} width="100%" />
+      return <img src={`${IMAGE_URL}${itemName}_lg.png`} width="100%" height="100%" />
     }
   }
 }

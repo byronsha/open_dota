@@ -3,7 +3,8 @@ import Item from '../../containers/Item'
 
 const styles = {
   item: {
-    width: '33%',
+    width: '44px',
+    height: '33px',
     padding: '1px',
     display: 'inline-block'
   }

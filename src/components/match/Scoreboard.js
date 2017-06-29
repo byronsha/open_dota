@@ -34,7 +34,7 @@ const Scoreboard = ({matchDetails}) => {
   const maxes = getMaxes(matchDetails.players)
 
   return (
-    <div>
+    <div style={{overflowX: 'auto'}}>
       <Team players={radiant} maxes={maxes} />
       <Team players={dire} maxes={maxes} />      
     </div>

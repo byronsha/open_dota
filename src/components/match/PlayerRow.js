@@ -20,29 +20,54 @@ const styles = {
   column: {
     paddingLeft: '8px',
     paddingRight: '8px',
-    verticalAlign: 'bottom'
+    verticalAlign: 'bottom',
+    width: 'auto'
   },
-  imageColumn: {
+  playerColumn: {
     paddingRight: '0px'
   },
   level: {
+    fontSize: '0.8em',
     color: amberA700,
-    width: '3%',
-    paddingLeft: '8px',
-    paddingRight: '8px'
+    border: `1px solid ${amberA700}`,
+    borderRadius: '50%',
+    padding: '1px 2px',
+    marginRight: '5px'
+  },
+  localizedName: {
+    color: '#ccc',
+    fontSize: '0.8em',
+    textTransform: 'uppercase'
   },
   items: {
     width: '100%'
   },
   itemsColumn: {
     padding: '0px 8px',
-    whiteSpace: 'wrap'
+    whiteSpace: 'wrap',
+    width: '300px'
+  },
+  player: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  heroImage: {
+    display: 'inline-block',
+    height: '100%',
+    marginRight: '8px'
+  },
+  playerName: {
+    fontWeight: 500,
+    fontSize: '1.1em',
+    paddingBottom: '2px'
   }
 }
 
 const PlayerRow = ({player, maxes}) => {
-  const heroName = heroes[player.hero_id].name.replace('npc_dota_hero_', '')
-  const data = {
+  let heroName = heroes[player.hero_id].name.replace('npc_dota_hero_', '')
+  let localizedName = heroes[player.hero_id].localized_name
+
+  let data = {
     'kills': blueA200,
     'deaths': redA700,
     'assists': greenA700,
@@ -56,19 +81,40 @@ const PlayerRow = ({player, maxes}) => {
     'total_gold': amberA700
   }
 
+  let dataLeft = ['kills', 'deaths', 'assists', 'total_gold']
+  let dataRight = ['last_hits', 'denies', 'gold_per_min', 'xp_per_min', 'hero_damage', 'hero_healing']
+
   let playerName = player.name ? player.name : player.personaname
 
   return (
     <TableRow>
-      <TableRowColumn style={styles.imageColumn}>
-        <img width="100%" src={`${IMAGE_URL}${heroName}_full.png`} />
+      <TableRowColumn style={styles.playerColumn}>
+        <div style={styles.player}>
+          <img style={styles.heroImage} src={`${IMAGE_URL}${heroName}_full.png`} />
+          <div>
+            <div style={styles.playerName}>{playerName ? playerName : '?'}</div>
+            <div>
+              <span style={styles.level}>{player.level}</span>
+              <span style={styles.localizedName}>{localizedName}</span>
+            </div>
+          </div>
+        </div>
       </TableRowColumn>
-      <TableRowColumn width="10%">
-        {playerName ? playerName : '?'}
-      </TableRowColumn>
-      <TableRowColumn style={styles.level}>
-        {player.level}
-      </TableRowColumn>
+
+      {dataLeft.map(stat => (
+        <TableRowColumn
+          key={stat}
+          style={styles.column}
+        >
+          <CountBar
+            width={player[stat] / maxes[stat] * 100}
+            height={8}
+            text={player[stat].toLocaleString()}
+            color={data[stat]}
+          />
+        </TableRowColumn>
+      ))}
+
       <TableRowColumn style={styles.itemsColumn}>
         <PlayerItems
           player={player}
@@ -76,7 +122,7 @@ const PlayerRow = ({player, maxes}) => {
         />
       </TableRowColumn>
 
-      {Object.keys(data).map(stat => (
+      {dataRight.map(stat => (
         <TableRowColumn
           key={stat}
           style={styles.column}
